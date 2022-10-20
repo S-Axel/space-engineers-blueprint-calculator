@@ -1,4 +1,3 @@
-import './App.css';
 import { CssBaseline } from '@mui/material';
 
 const App = () => (
