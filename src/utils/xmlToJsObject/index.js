@@ -1,15 +1,13 @@
-import parser from 'xml2js';
+import X2JS from 'x2js';
 
 /**
  * Convert an XML string to a JavaScript object
  * @param xmlString
- * @return {Promise<Object>}
+ * @return {Object}
  */
-const xmlToJsObject = async (xmlString) => new Promise((resolve, reject) => {
-  parser.parseString(xmlString, (error, jsObject) => {
-    if (error) reject(error);
-    else resolve(jsObject);
-  });
-});
+const xmlToJsObject = (xmlString) => {
+  const x2js = new X2JS();
+  return x2js.xml2js(xmlString);
+};
 
 export default xmlToJsObject;

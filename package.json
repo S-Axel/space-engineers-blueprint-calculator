@@ -17,7 +17,7 @@
     "react-drag-drop-files": "^2.3.7",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
-    "xml2js": "^0.4.23"
+    "x2js": "^3.4.4"
   },
   "scripts": {
     "start": "react-scripts start",
