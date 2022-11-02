@@ -1,0 +1,32 @@
+{
+  "Stone": {
+    "name": "DisplayName_Item_Gravel"
+  },
+  "Iron": {
+    "name": "DisplayName_Item_IronIngot"
+  },
+  "Uranium": {
+    "name": "DisplayName_Item_UraniumIngot"
+  },
+  "Platinum": {
+    "name": "DisplayName_Item_PlatinumIngot"
+  },
+  "Gold": {
+    "name": "DisplayName_Item_GoldIngot"
+  },
+  "Silver": {
+    "name": "DisplayName_Item_SilverIngot"
+  },
+  "Silicon": {
+    "name": "DisplayName_Item_SiliconWafer"
+  },
+  "Magnesium": {
+    "name": "DisplayName_Item_MagnesiumPowder"
+  },
+  "Cobalt": {
+    "name": "DisplayName_Item_CobaltIngot"
+  },
+  "Nickel": {
+    "name": "DisplayName_Item_NickelIngot"
+  }
+}

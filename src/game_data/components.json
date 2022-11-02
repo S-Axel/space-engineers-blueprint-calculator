@@ -1,0 +1,310 @@
+{
+  "Construction": {
+    "name": "DisplayName_Item_ConstructionComponent",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "8"
+      }
+    ]
+  },
+  "Girder": {
+    "name": "DisplayName_Item_Girder",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "6"
+      }
+    ]
+  },
+  "MetalGrid": {
+    "name": "DisplayName_Item_MetalGrid",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "12"
+      },
+      {
+        "subtype": "Nickel",
+        "count": "5"
+      },
+      {
+        "subtype": "Cobalt",
+        "count": "3"
+      }
+    ]
+  },
+  "InteriorPlate": {
+    "name": "DisplayName_Item_InteriorPlate",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "3"
+      }
+    ]
+  },
+  "SteelPlate": {
+    "name": "DisplayName_Item_SteelPlate",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "21"
+      }
+    ]
+  },
+  "SmallTube": {
+    "name": "DisplayName_Item_SmallSteelTube",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "5"
+      }
+    ]
+  },
+  "LargeTube": {
+    "name": "DisplayName_Item_LargeSteelTube",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "30"
+      }
+    ]
+  },
+  "Motor": {
+    "name": "DisplayName_Item_Motor",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "20"
+      },
+      {
+        "subtype": "Nickel",
+        "count": "5"
+      }
+    ]
+  },
+  "Display": {
+    "name": "DisplayName_Item_Display",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "1"
+      },
+      {
+        "subtype": "Silicon",
+        "count": "5"
+      }
+    ]
+  },
+  "BulletproofGlass": {
+    "name": "DisplayName_Item_BulletproofGlass",
+    "recipe": [
+      {
+        "subtype": "Silicon",
+        "count": "15"
+      }
+    ]
+  },
+  "Computer": {
+    "name": "DisplayName_Item_Computer",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "0.5"
+      },
+      {
+        "subtype": "Silicon",
+        "count": "0.2"
+      }
+    ]
+  },
+  "Reactor": {
+    "name": "DisplayName_Item_ReactorComponents",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "15"
+      },
+      {
+        "subtype": "Stone",
+        "count": "20"
+      },
+      {
+        "subtype": "Silver",
+        "count": "5"
+      }
+    ]
+  },
+  "Thrust": {
+    "name": "DisplayName_Item_ThrustComponents",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "30"
+      },
+      {
+        "subtype": "Cobalt",
+        "count": "10"
+      },
+      {
+        "subtype": "Gold",
+        "count": "1"
+      },
+      {
+        "subtype": "Platinum",
+        "count": "0.4"
+      }
+    ]
+  },
+  "GravityGenerator": {
+    "name": "DisplayName_Item_GravityGeneratorComponents",
+    "recipe": [
+      {
+        "subtype": "Silver",
+        "count": "5"
+      },
+      {
+        "subtype": "Gold",
+        "count": "10"
+      },
+      {
+        "subtype": "Cobalt",
+        "count": "220"
+      },
+      {
+        "subtype": "Iron",
+        "count": "600"
+      }
+    ]
+  },
+  "Medical": {
+    "name": "DisplayName_Item_MedicalComponents",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "60"
+      },
+      {
+        "subtype": "Nickel",
+        "count": "70"
+      },
+      {
+        "subtype": "Silver",
+        "count": "20"
+      }
+    ]
+  },
+  "RadioCommunication": {
+    "name": "DisplayName_Item_RadioCommunicationComponents",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "8"
+      },
+      {
+        "subtype": "Silicon",
+        "count": "1"
+      }
+    ]
+  },
+  "Detector": {
+    "name": "DisplayName_Item_DetectorComponents",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "5"
+      },
+      {
+        "subtype": "Nickel",
+        "count": "15"
+      }
+    ]
+  },
+  "Canvas": {
+    "name": "DisplayName_Item_CanvasCartridge",
+    "recipe": [
+      {
+        "subtype": "Silicon",
+        "count": "35"
+      },
+      {
+        "subtype": "Iron",
+        "count": "2"
+      }
+    ]
+  },
+  "Explosives": {
+    "name": "DisplayName_Item_Explosives",
+    "recipe": [
+      {
+        "subtype": "Silicon",
+        "count": "0.5"
+      },
+      {
+        "subtype": "Magnesium",
+        "count": "2.0"
+      }
+    ]
+  },
+  "SolarCell": {
+    "name": "DisplayName_Item_SolarCell",
+    "recipe": [
+      {
+        "subtype": "Nickel",
+        "count": "3"
+      },
+      {
+        "subtype": "Silicon",
+        "count": "6"
+      }
+    ]
+  },
+  "PowerCell": {
+    "name": "DisplayName_Item_PowerCell",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "10"
+      },
+      {
+        "subtype": "Silicon",
+        "count": "1"
+      },
+      {
+        "subtype": "Nickel",
+        "count": "2"
+      }
+    ]
+  },
+  "Superconductor": {
+    "name": "DisplayName_Item_Superconductor",
+    "recipe": [
+      {
+        "subtype": "Iron",
+        "count": "10"
+      },
+      {
+        "subtype": "Gold",
+        "count": "2"
+      }
+    ]
+  },
+  "ZoneChip": {
+    "name": "DisplayName_Item_ZoneChip",
+    "recipe": [
+      {
+        "subtype": "ZoneChip",
+        "count": "1"
+      }
+    ]
+  },
+  "EngineerPlushie": {
+    "name": "DisplayName_Item_EngineerPlushie",
+    "recipe": [
+      {
+        "subtype": "EngineerPlushie",
+        "count": "0"
+      }
+    ]
+  }
+}
