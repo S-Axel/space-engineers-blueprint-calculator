@@ -1,11 +1,21 @@
 import { CssBaseline } from '@mui/material';
 
-import BlueprintPageContainer from '../../containers/BlueprintPageContainer';
+import BlueprintCalculatorContainer from '../../containers/BlueprintCalculatorContainer';
+import PageHeader from '../PageHeader';
+import PageFooter from '../PageFooter';
+import PageBody from '../PageBody';
+import Page from '../Page';
 
 const App = () => (
   <>
     <CssBaseline />
-    <BlueprintPageContainer />
+    <Page>
+      <PageHeader />
+      <PageBody>
+        <BlueprintCalculatorContainer />
+      </PageBody>
+      <PageFooter />
+    </Page>
   </>
 );
 

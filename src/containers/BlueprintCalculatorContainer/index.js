@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import BlueprintPage from '../../components/BlueprintPage';
+import BlueprintCalculator from '../../components/BlueprintCalculator';
 import { computeBlueprint } from '../../services/blueprintService';
 
-const BlueprintPageContainer = () => {
+const BlueprintCalculatorContainer = () => {
   // eslint-disable-next-line no-unused-vars
   const [blueprint, setBlueprint] = useState(null);
 
@@ -18,8 +18,8 @@ const BlueprintPageContainer = () => {
   };
 
   return (
-    <BlueprintPage blueprint={blueprint} updateFile={updateFile} />
+    <BlueprintCalculator blueprint={blueprint} updateFile={updateFile} />
   );
 };
 
-export default BlueprintPageContainer;
+export default BlueprintCalculatorContainer;
