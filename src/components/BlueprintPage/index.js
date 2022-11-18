@@ -1,15 +1,21 @@
 import PropTypes from 'prop-types';
 
 import FileDnd from '../FileDnd';
+import Page from '../Page';
 import PageHeader from '../PageHeader';
+import PageFooter from '../PageFooter';
+import PageBody from '../PageBody';
 
 const BlueprintPage = ({ blueprint, updateFile }) => (
-  <>
+  <Page>
     <PageHeader />
-    <FileDnd updateFile={updateFile} />
-    <div>blueprint description</div>
-    <div>{blueprint}</div>
-  </>
+    <PageBody>
+      <FileDnd updateFile={updateFile} />
+      <div>blueprint description</div>
+      <div>{blueprint}</div>
+    </PageBody>
+    <PageFooter />
+  </Page>
 );
 
 BlueprintPage.propTypes = {
