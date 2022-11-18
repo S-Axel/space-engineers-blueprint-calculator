@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 
 import FileDnd from '../FileDnd';
+import PageHeader from '../PageHeader';
 
 const BlueprintPage = ({ blueprint, updateFile }) => (
   <>
+    <PageHeader />
     <FileDnd updateFile={updateFile} />
     <div>blueprint description</div>
     <div>{blueprint}</div>
