@@ -1,23 +1,24 @@
 import PropTypes from 'prop-types';
+import Grid from '@mui/material/Unstable_Grid2';
 
 import FileDnd from '../FileDnd';
 
-const BlueprintPage = ({ blueprint, updateFile }) => (
-  <>
+const BlueprintCalculator = ({ blueprint, updateFile }) => (
+  <Grid xs={12}>
     <FileDnd updateFile={updateFile} />
     <div>blueprint description</div>
     <div>{blueprint}</div>
-  </>
+  </Grid>
 );
 
-BlueprintPage.propTypes = {
+BlueprintCalculator.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   blueprint: PropTypes.object,
   updateFile: PropTypes.func.isRequired,
 };
 
-BlueprintPage.defaultProps = {
+BlueprintCalculator.defaultProps = {
   blueprint: null,
 };
 
-export default BlueprintPage;
+export default BlueprintCalculator;
