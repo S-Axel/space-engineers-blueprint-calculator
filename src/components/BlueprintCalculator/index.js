@@ -1,13 +1,18 @@
 import PropTypes from 'prop-types';
 import Grid from '@mui/material/Unstable_Grid2';
+import { Card, CardContent, CardHeader } from '@mui/material';
 
 import FileDnd from '../FileDnd';
 
+// eslint-disable-next-line no-unused-vars
 const BlueprintCalculator = ({ blueprint, updateFile }) => (
-  <Grid xs={12}>
-    <FileDnd updateFile={updateFile} />
-    <div>blueprint description</div>
-    <div>{blueprint}</div>
+  <Grid xs={10} mdOffset={1}>
+    <Card elevation={2}>
+      <CardHeader title="Import a blueprint to be analyzed" titleTypographyProps={{ component: 'h2', variant: 'h5' }} />
+      <CardContent>
+        <FileDnd updateFile={updateFile} />
+      </CardContent>
+    </Card>
   </Grid>
 );
 
