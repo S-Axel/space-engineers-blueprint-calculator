@@ -8,7 +8,7 @@ import { AppBar, Toolbar, Typography } from '@mui/material';
 const PageHeader = () => (
   <AppBar sx={{ position: 'static' }}>
     <Toolbar>
-      <Typography component="span" variant="h6">Space Engineers Blueprint Calculator</Typography>
+      <Typography component="h1" variant="h6">Space Engineers Blueprint Calculator</Typography>
     </Toolbar>
   </AppBar>
 );
