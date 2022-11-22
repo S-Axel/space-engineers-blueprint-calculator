@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
 
 const Page = ({ children, sx }) => (
-  <Box sx={{ ...sx, minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+  <Box component="section" sx={{ ...sx, minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
     {children}
   </Box>
 );
