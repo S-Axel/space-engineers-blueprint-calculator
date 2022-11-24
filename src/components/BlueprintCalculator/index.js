@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 
 import PageFileDnd from '../PageFileDnd';
-import PageBlueprint from '../PageBlueprint';
+import PageBlueprintContainer from '../../containers/PageBlueprintContainer';
 
 const BlueprintCalculator = ({ blueprint, updateFile }) => (
-  blueprint ? <PageBlueprint blueprint={blueprint} /> : <PageFileDnd updateFile={updateFile} />
+  blueprint
+    ? <PageBlueprintContainer blueprint={blueprint} />
+    : <PageFileDnd updateFile={updateFile} />
 );
 
 BlueprintCalculator.propTypes = {
