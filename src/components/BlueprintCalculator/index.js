@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 import PageFileDnd from '../PageFileDnd';
 import PageBlueprintContainer from '../../containers/PageBlueprintContainer';
+import { propTypeBlueprint } from '../../prop_types';
 
 const BlueprintCalculator = ({ blueprint, updateFile }) => (
   blueprint
@@ -10,8 +11,7 @@ const BlueprintCalculator = ({ blueprint, updateFile }) => (
 );
 
 BlueprintCalculator.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  blueprint: PropTypes.object,
+  blueprint: propTypeBlueprint,
   updateFile: PropTypes.func.isRequired,
 };
 

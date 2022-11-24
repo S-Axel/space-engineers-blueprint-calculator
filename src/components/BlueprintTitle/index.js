@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
 import { Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
+
+import { propTypeBlueprint } from '../../prop_types';
 
 const getDlcString = (dlc) => {
   if (typeof dlc === 'string') {
@@ -31,8 +32,7 @@ const BlueprintTitle = ({ blueprint }) => {
 };
 
 BlueprintTitle.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  blueprint: PropTypes.object.isRequired,
+  blueprint: propTypeBlueprint.isRequired,
 };
 
 export default BlueprintTitle;

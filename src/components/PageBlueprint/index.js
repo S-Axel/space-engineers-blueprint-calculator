@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
+
 import BlueprintTitle from '../BlueprintTitle';
 import BlueprintGridListContainer from '../../containers/BlueprintGridListContainer';
+import { propTypeBlueprint } from '../../prop_types';
 
 const PageBlueprint = ({ blueprint, selectedGrid, onGridChange }) => (
   <>
@@ -14,8 +16,7 @@ const PageBlueprint = ({ blueprint, selectedGrid, onGridChange }) => (
 );
 
 PageBlueprint.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  blueprint: PropTypes.object.isRequired,
+  blueprint: propTypeBlueprint.isRequired,
   selectedGrid: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
