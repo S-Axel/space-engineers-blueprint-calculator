@@ -12,7 +12,15 @@ describe('computeBlueprint', () => {
   });
 
   it('should throw, given a empty string', () => {
+    // disable console.error
+    const consoleError = console.error;
+    console.error = jest.fn();
+
     expect(() => computeBlueprint('')).toThrow();
+    expect(console.error).toHaveBeenCalledTimes(1);
+
+    // restore console.error
+    console.error = consoleError;
   });
 
   it('should throw, given an incomplete xml', () => {
