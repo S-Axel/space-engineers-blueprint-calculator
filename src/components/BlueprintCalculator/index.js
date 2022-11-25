@@ -1,22 +1,28 @@
-import PropTypes from 'prop-types';
+import { useState } from 'react';
 
+import { computeBlueprint } from '../../services/blueprintService';
+import PageBlueprint from '../PageBlueprint';
 import PageFileDnd from '../PageFileDnd';
-import PageBlueprintContainer from '../../containers/PageBlueprintContainer';
-import { propTypeBlueprint } from '../../prop_types';
 
-const BlueprintCalculator = ({ blueprint, updateFile }) => (
-  blueprint
-    ? <PageBlueprintContainer blueprint={blueprint} />
-    : <PageFileDnd updateFile={updateFile} />
-);
+const BlueprintCalculator = () => {
+  const [blueprint, setBlueprint] = useState(null);
 
-BlueprintCalculator.propTypes = {
-  blueprint: propTypeBlueprint,
-  updateFile: PropTypes.func.isRequired,
-};
+  const updateFile = async (newFile) => {
+    try {
+      const xml = await newFile.text();
+      const newBlueprint = computeBlueprint(xml);
+      setBlueprint(newBlueprint);
+      console.log(newBlueprint);
+    } catch (error) {
+      console.log('An error occured, try with another file.\n', error);
+    }
+  };
 
-BlueprintCalculator.defaultProps = {
-  blueprint: null,
+  return (
+    blueprint
+      ? <PageBlueprint blueprint={blueprint} />
+      : <PageFileDnd updateFile={updateFile} />
+  );
 };
 
 export default BlueprintCalculator;

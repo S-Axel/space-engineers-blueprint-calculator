@@ -1,7 +1,7 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
 
 import theme from '../../theme';
-import BlueprintCalculatorContainer from '../../containers/BlueprintCalculatorContainer';
+import BlueprintCalculator from '../BlueprintCalculator';
 import PageHeader from '../PageHeader';
 import PageFooter from '../PageFooter';
 import PageBody from '../PageBody';
@@ -13,7 +13,7 @@ const App = () => (
     <Page>
       <PageHeader />
       <PageBody>
-        <BlueprintCalculatorContainer />
+        <BlueprintCalculator />
       </PageBody>
       <PageFooter />
     </Page>
