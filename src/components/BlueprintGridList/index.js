@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { propTypeBlueprint } from '../../prop_types';
 
 const BlueprintGridList = ({ blueprint, selectedGrid, onGridChange, gridOptions }) => (
-  <Grid xs={4}>
+  <Grid xs={3}>
     <Accordion elevation={2}>
       <AccordionSummary
         sx={{ alignItems: 'center' }}

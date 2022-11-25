@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import BlueprintTitle from '../BlueprintTitle';
 import BlueprintGridListContainer from '../../containers/BlueprintGridListContainer';
 import { propTypeBlueprint } from '../../prop_types';
+import BlueprintGridTitle from '../BlueprintGridTitle';
 
 const PageBlueprint = ({ blueprint, selectedGrid, onGridChange }) => (
   <>
@@ -12,6 +13,7 @@ const PageBlueprint = ({ blueprint, selectedGrid, onGridChange }) => (
       selectedGrid={selectedGrid}
       onGridChange={onGridChange}
     />
+    <BlueprintGridTitle blueprint={blueprint} selectedGrid={selectedGrid} />
   </>
 );
 
