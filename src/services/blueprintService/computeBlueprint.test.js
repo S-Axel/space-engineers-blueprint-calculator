@@ -142,4 +142,28 @@ describe('computeBlueprint', () => {
     expect(blueprint.recipe.ingots).toContainEqual({ name: 'Nickel', count: 20 });
     expect(blueprint.recipe.ingots).toContainEqual({ name: 'Silicon', count: 0.4 });
   });
+
+  it('should compute grids mass', () => {
+    const blueprint = computeBlueprint(grid7420);
+
+    expect(blueprint.mass).toBe(2326.4);
+    expect(blueprint.mainGrid.mass).toBe(1076.4);
+    expect(blueprint.subGrids[0].mass).toBe(1250);
+  });
+
+  it('should compute grids pcu cost', () => {
+    const blueprint = computeBlueprint(grid7420);
+
+    expect(blueprint.pcuCost).toBe(103);
+    expect(blueprint.mainGrid.pcuCost).toBe(101);
+    expect(blueprint.subGrids[0].pcuCost).toBe(2);
+  });
+
+  it('should compute grids block count', () => {
+    const blueprint = computeBlueprint(grid7420);
+
+    expect(blueprint.blockCount).toBe(4);
+    expect(blueprint.mainGrid.blockCount).toBe(2);
+    expect(blueprint.subGrids[0].blockCount).toBe(2);
+  });
 });
