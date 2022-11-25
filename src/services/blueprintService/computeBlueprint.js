@@ -163,7 +163,7 @@ const computeGrid = (xmlGrid) => {
  * Compute main grid
  * @param {string} mainGridName
  * @param {object} xmlGrids
- * @return {Grid[]}
+ * @return {Grid}
  */
 const computeMainGrid = (mainGridName, xmlGrids) => {
   const xmlMainGrid = xmlGrids.find((grid) => grid.DisplayName === mainGridName);
@@ -182,9 +182,9 @@ const computeSubGrids = (mainGridName, xmlGrids) => {
 };
 
 /**
- * Gather static informations from xml object
+ * Gather static information from xml object
  * @param {string} xmlObject
- * @return {{owner: {steamId: *, name: *}, name: *, workshopId: *, dlc: *}}
+ * @return {{owner: {steamId: string, name: string}, name: string, workshopId: string, dlc: string}}
  */
 const getStaticInfo = (xmlObject) => ({
   owner: {
