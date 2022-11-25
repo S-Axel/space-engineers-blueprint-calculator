@@ -1,4 +1,7 @@
 import computeBlueprint from './computeBlueprint';
+import getSelectedGridInfo from './getSelectedGridInfo';
 
-// eslint-disable-next-line import/prefer-default-export
-export { computeBlueprint };
+export {
+  computeBlueprint,
+  getSelectedGridInfo,
+};

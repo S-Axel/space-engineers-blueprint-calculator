@@ -5,7 +5,7 @@ import grid7420 from '../../mocks/blueprints/grid7420';
 import grid4014 from '../../mocks/blueprints/grid4014';
 import emptyBp from '../../mocks/blueprints/emptyBp';
 
-describe('computeBlueprint', () => {
+describe('blueprintService/computeBlueprint', () => {
   it('should return an object', () => {
     expect(computeBlueprint(miningShipBp)).toBeInstanceOf(Object);
     expect(computeBlueprint(grid7782)).toBeInstanceOf(Object);

@@ -4,20 +4,11 @@ import PropTypes from 'prop-types';
 
 import GRID_OPTION from '../../constants/grid_option';
 import { propTypeBlueprint } from '../../prop_types';
+import { getSelectedGridInfo } from '../../services/blueprintService';
 
 const gridOptionStrings = {
   [GRID_OPTION.ALL]: 'All grids',
   [GRID_OPTION.MAIN]: 'Main grid',
-};
-
-const getSelectedGridInfo = (blueprint, selectedGrid) => {
-  if (typeof selectedGrid === 'number') {
-    return blueprint.subGrids[selectedGrid];
-  }
-  if (selectedGrid === GRID_OPTION.MAIN) {
-    return blueprint.mainGrid;
-  }
-  return blueprint;
 };
 
 const BlueprintGridTitle = ({ blueprint, selectedGrid }) => {
