@@ -24,7 +24,14 @@ import xmlToJsObject from '../../utils/xmlToJsObject';
 
 /**
  * Grid
- * @typedef {{name: string, size: string, recipe: Recipe}} Grid
+ * @typedef {{
+ *   name: string,
+ *   size: string,
+ *   recipe: Recipe,
+ *   blockCount: number,
+ *   mass: number,
+ *   pcuCost: number,
+ * }} Grid
  */
 
 /**
@@ -34,7 +41,10 @@ import xmlToJsObject from '../../utils/xmlToJsObject';
  *   subGrids: Grid[],
  *   mainGrid: Grid,
  *   workshopId: string,
- *   dlc: string
+ *   dlc: string,
+ *   blockCount: number,
+ *   mass: number,
+ *   pcuCost: number,
  * }} Blueprint
  */
 
@@ -134,6 +144,40 @@ const computeGlobalRecipe = (mainGrid, subGrids) => {
 };
 
 /**
+ * Count blocks in a recipe
+ * @param {Recipe} recipe
+ * @return {number}
+ */
+const computeRecipeBlockCount = (recipe) => (
+  recipe.blocks.reduce((sum, block) => sum + block.count, 0)
+);
+
+/**
+ * Compute mass of a grid from its recipe
+ * @param {Recipe} recipe
+ * @return {number}
+ */
+const computeRecipeMass = (recipe) => (
+  recipe.components.reduce(
+    (sum, component) => (
+      sum + gameComponents[component.name].mass * component.count
+    ),
+    0,
+  ));
+
+/**
+ * Compute pcu cost of a grid from its recipe
+ * @param {Recipe} recipe
+ * @return {number}
+ */
+const computeRecipePcu = (recipe) => (
+  recipe.blocks.reduce(
+    (sum, block) => sum + gameBlocks[block.name].pcu * block.count,
+    0,
+  )
+);
+
+/**
  * Get all block names from a grid
  * @param {Object} xmlGrid
  * @return {string[]}
@@ -156,7 +200,10 @@ const computeGrid = (xmlGrid) => {
   const name = xmlGrid.DisplayName;
   const size = xmlGrid.GridSizeEnum;
   const recipe = computeRecipe(blocks);
-  return { name, size, recipe };
+  const blockCount = computeRecipeBlockCount(recipe);
+  const mass = computeRecipeMass(recipe);
+  const pcuCost = computeRecipePcu(recipe);
+  return { name, size, recipe, blockCount, mass, pcuCost };
 };
 
 /**
@@ -221,12 +268,18 @@ const computeBlueprint = (xmlString) => {
   const mainGrid = computeMainGrid(staticInfo.name, xmlGrids);
   const subGrids = computeSubGrids(staticInfo.name, xmlGrids);
   const recipe = computeGlobalRecipe(mainGrid, subGrids);
+  const blockCount = computeRecipeBlockCount(recipe);
+  const mass = computeRecipeMass(recipe);
+  const pcuCost = computeRecipePcu(recipe);
 
   return {
     ...staticInfo,
     mainGrid,
     subGrids,
     recipe,
+    blockCount,
+    mass,
+    pcuCost,
   };
 };
 
