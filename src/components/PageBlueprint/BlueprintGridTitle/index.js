@@ -2,9 +2,9 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 
-import GRID_OPTION from '../../constants/grid_option';
-import { propTypeBlueprint } from '../../prop_types';
-import { getSelectedGridInfo } from '../../services/blueprintService';
+import GRID_OPTION from '../../../constants/grid_option';
+import { propTypeBlueprint } from '../../../prop_types';
+import { getSelectedGridInfo } from '../../../services/blueprintService';
 
 const gridOptionStrings = {
   [GRID_OPTION.ALL]: 'All grids',

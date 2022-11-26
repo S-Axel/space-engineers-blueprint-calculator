@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import BlueprintTitle from '../BlueprintTitle';
-import BlueprintGridList from '../BlueprintGridList';
-import BlueprintGridTitle from '../BlueprintGridTitle';
+import BlueprintTitle from './BlueprintTitle';
+import BlueprintGridList from './BlueprintGridList';
+import BlueprintGridTitle from './BlueprintGridTitle';
 import { propTypeBlueprint } from '../../prop_types';
 import GRID_OPTION from '../../constants/grid_option';
 

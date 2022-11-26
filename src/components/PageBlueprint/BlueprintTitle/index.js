@@ -1,7 +1,7 @@
 import { Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
-import { propTypeBlueprint } from '../../prop_types';
+import { propTypeBlueprint } from '../../../prop_types';
 
 const getDlcString = (dlc) => {
   if (typeof dlc === 'string') {

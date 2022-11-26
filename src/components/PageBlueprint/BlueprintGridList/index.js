@@ -7,8 +7,8 @@ import Grid from '@mui/material/Unstable_Grid2';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import PropTypes from 'prop-types';
 
-import { propTypeBlueprint } from '../../prop_types';
-import GRID_OPTION from '../../constants/grid_option';
+import { propTypeBlueprint } from '../../../prop_types';
+import GRID_OPTION from '../../../constants/grid_option';
 
 const BlueprintGridList = ({ blueprint, selectedGrid, onGridChange }) => {
   const gridOptions = [
