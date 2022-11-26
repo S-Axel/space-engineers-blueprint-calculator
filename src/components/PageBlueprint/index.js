@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Grid from '@mui/material/Unstable_Grid2';
 
 import BlueprintTitle from './BlueprintTitle';
 import BlueprintGridList from './BlueprintGridList';
@@ -16,13 +17,19 @@ const PageBlueprint = ({ blueprint }) => {
 
   return (
     <>
-      <BlueprintTitle blueprint={blueprint} />
-      <BlueprintGridList
-        blueprint={blueprint}
-        selectedGrid={selectedGrid}
-        onGridChange={onGridChangeHandler}
-      />
-      <BlueprintGridTitle blueprint={blueprint} selectedGrid={selectedGrid} />
+      <Grid xs={12}>
+        <BlueprintTitle blueprint={blueprint} />
+      </Grid>
+      <Grid xs={3}>
+        <BlueprintGridList
+          blueprint={blueprint}
+          selectedGrid={selectedGrid}
+          onGridChange={onGridChangeHandler}
+        />
+      </Grid>
+      <Grid xs={9}>
+        <BlueprintGridTitle blueprint={blueprint} selectedGrid={selectedGrid} />
+      </Grid>
     </>
   );
 };

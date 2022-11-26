@@ -1,5 +1,4 @@
 import { Typography } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
 
 import { propTypeBlueprint } from '../../../prop_types';
 
@@ -17,7 +16,7 @@ const BlueprintTitle = ({ blueprint }) => {
   const dlcString = getDlcString(blueprint.dlc);
 
   return (
-    <Grid xs={12}>
+    <>
       <Typography variant="h5" component="h2">
         {blueprint.name}
       </Typography>
@@ -27,7 +26,7 @@ const BlueprintTitle = ({ blueprint }) => {
       <Typography variant="caption" component="p">
         {dlcString}
       </Typography>
-    </Grid>
+    </>
   );
 };
 
