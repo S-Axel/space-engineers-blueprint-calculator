@@ -18,8 +18,10 @@ const App = () => {
       const xml = await newFile.text();
       const newBlueprint = computeBlueprint(xml);
       setBlueprint(newBlueprint);
+      // eslint-disable-next-line no-console
       console.log(newBlueprint);
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log('An error occured, try with another file.\n', error);
     }
   };
