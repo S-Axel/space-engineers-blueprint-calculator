@@ -2,16 +2,14 @@ import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 
 import GRID_OPTION from '../../../constants/grid_option';
-import { propTypeBlueprint } from '../../../prop_types';
-import { getSelectedGridInfo } from '../../../services/blueprintService';
+import { propTypeBlueprint, propTypeGrid } from '../../../prop_types';
 
 const gridOptionStrings = {
   [GRID_OPTION.ALL]: 'All grids',
   [GRID_OPTION.MAIN]: 'Main grid',
 };
 
-const BlueprintGridTitle = ({ blueprint, selectedGrid }) => {
-  const selectedGridInfo = getSelectedGridInfo(blueprint, selectedGrid);
+const BlueprintGridTitle = ({ selectedGrid, selectedGridInfo }) => {
   const title = typeof selectedGrid === 'number'
     ? `Sub grid: ${selectedGridInfo.name}`
     : gridOptionStrings[selectedGrid];
@@ -29,8 +27,8 @@ const BlueprintGridTitle = ({ blueprint, selectedGrid }) => {
 };
 
 BlueprintGridTitle.propTypes = {
-  blueprint: propTypeBlueprint.isRequired,
   selectedGrid: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  selectedGridInfo: PropTypes.oneOfType([propTypeBlueprint, propTypeGrid]).isRequired,
 };
 
 export default BlueprintGridTitle;

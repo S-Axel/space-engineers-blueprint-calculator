@@ -6,13 +6,20 @@ import BlueprintGridList from './BlueprintGridList';
 import BlueprintGridTitle from './BlueprintGridTitle';
 import { propTypeBlueprint } from '../../prop_types';
 import GRID_OPTION from '../../constants/grid_option';
+import { getSelectedGridInfo } from '../../services/blueprintService';
 
 const PageBlueprint = ({ blueprint }) => {
+  const [state, setState] = useState({
   // possible values for selectedGrids: 'all', 'main', any subgrid index as a number
-  const [selectedGrid, setSelectedGrid] = useState(GRID_OPTION.ALL);
+    selectedGrid: GRID_OPTION.ALL,
+    selectedGridInfo: getSelectedGridInfo(blueprint, GRID_OPTION.ALL),
+  });
 
   const onGridChangeHandler = (newGrid) => {
-    setSelectedGrid(newGrid);
+    setState({
+      selectedGrid: newGrid,
+      selectedGridInfo: getSelectedGridInfo(blueprint, newGrid),
+    });
   };
 
   return (
@@ -23,12 +30,15 @@ const PageBlueprint = ({ blueprint }) => {
       <Grid xs={3}>
         <BlueprintGridList
           blueprint={blueprint}
-          selectedGrid={selectedGrid}
+          selectedGrid={state.selectedGrid}
           onGridChange={onGridChangeHandler}
         />
       </Grid>
       <Grid xs={9}>
-        <BlueprintGridTitle blueprint={blueprint} selectedGrid={selectedGrid} />
+        <BlueprintGridTitle
+          selectedGrid={state.selectedGrid}
+          selectedGridInfo={state.selectedGridInfo}
+        />
       </Grid>
     </>
   );
