@@ -7,6 +7,7 @@ import BlueprintGridTitle from './BlueprintGridTitle';
 import { propTypeBlueprint } from '../../prop_types';
 import GRID_OPTION from '../../constants/grid_option';
 import { getSelectedGridInfo } from '../../services/blueprintService';
+import BlueprintGridIngots from './BlueprintGridIngots';
 
 const PageBlueprint = ({ blueprint }) => {
   const [state, setState] = useState({
@@ -39,6 +40,9 @@ const PageBlueprint = ({ blueprint }) => {
           selectedGrid={state.selectedGrid}
           selectedGridInfo={state.selectedGridInfo}
         />
+      </Grid>
+      <Grid xs={3}>
+        <BlueprintGridIngots ingots={state.selectedGridInfo.recipe.ingots} />
       </Grid>
     </>
   );
