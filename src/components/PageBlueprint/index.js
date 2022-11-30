@@ -12,16 +12,22 @@ import BlueprintGridIngredients from './BlueprintGridIngredients';
 
 const PageBlueprint = ({ blueprint }) => {
   const [state, setState] = useState({
-  // possible values for selectedGrids: 'all', 'main', any subgrid index as a number
+    // possible values for selectedGrids: 'all', 'main', any subgrid index as a number
     selectedGrid: GRID_OPTION.ALL,
     selectedGridInfo: getSelectedGridInfo(blueprint, GRID_OPTION.ALL),
+    listOpen: false,
   });
 
   const onGridChangeHandler = (newGrid) => {
-    setState({
+    setState((prevState) => ({
+      ...prevState,
       selectedGrid: newGrid,
       selectedGridInfo: getSelectedGridInfo(blueprint, newGrid),
-    });
+    }));
+  };
+
+  const onGridListOpenChangeHandler = (event, isExpanded) => {
+    setState((prevState) => ({ ...prevState, listOpen: isExpanded }));
   };
 
   return (
@@ -29,27 +35,38 @@ const PageBlueprint = ({ blueprint }) => {
       <Grid xs={12}>
         <BlueprintTitle blueprint={blueprint} />
       </Grid>
-      <Grid xs={3}>
-        <BlueprintGridList
-          blueprint={blueprint}
-          selectedGrid={state.selectedGrid}
-          onGridChange={onGridChangeHandler}
-        />
+      <Grid container xs={12} sx={{ position: 'relative' }}>
+        <Grid xs={12} md={3} sx={{ position: { md: state.listOpen ? 'absolute' : 'static' } }}>
+          <BlueprintGridList
+            blueprint={blueprint}
+            selectedGrid={state.selectedGrid}
+            onGridChange={onGridChangeHandler}
+            onOpenChange={onGridListOpenChangeHandler}
+          />
+        </Grid>
+        <Grid xs={12} mdOffset={state.listOpen ? 3 : 0} md={9}>
+          <BlueprintGridTitle
+            selectedGrid={state.selectedGrid}
+            selectedGridInfo={state.selectedGridInfo}
+          />
+        </Grid>
       </Grid>
-      <Grid xs={9}>
-        <BlueprintGridTitle
-          selectedGrid={state.selectedGrid}
-          selectedGridInfo={state.selectedGridInfo}
-        />
-      </Grid>
-      <Grid xsOffset={3} xs={9}>
-        <BlueprintGridIngredients title="Blocks" ingredients={state.selectedGridInfo.recipe.blocks} />
-      </Grid>
-      <Grid xs={6}>
-        <BlueprintGridIngredients title="Components" ingredients={state.selectedGridInfo.recipe.components} />
-      </Grid>
-      <Grid xs={6}>
-        <BlueprintGridIngots ingots={state.selectedGridInfo.recipe.ingots} />
+      <Grid container xs={12}>
+        <Grid xs={12} mdOffset={state.listOpen ? 3 : 0} md={state.listOpen ? 9 : 12}>
+          <BlueprintGridIngredients
+            title="Blocks"
+            ingredients={state.selectedGridInfo.recipe.blocks}
+          />
+        </Grid>
+        <Grid xs={12} mdOffset={state.listOpen ? 3 : 0} md={state.listOpen ? 9 : 6}>
+          <BlueprintGridIngredients
+            title="Components"
+            ingredients={state.selectedGridInfo.recipe.components}
+          />
+        </Grid>
+        <Grid xs={12} mdOffset={state.listOpen ? 3 : 0} md={state.listOpen ? 9 : 6}>
+          <BlueprintGridIngots ingots={state.selectedGridInfo.recipe.ingots} />
+        </Grid>
       </Grid>
     </>
   );

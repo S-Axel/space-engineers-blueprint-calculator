@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { propTypeBlueprint } from '../../../prop_types';
 import GRID_OPTION from '../../../constants/grid_option';
 
-const BlueprintGridList = ({ blueprint, selectedGrid, onGridChange }) => {
+const BlueprintGridList = ({ blueprint, selectedGrid, onGridChange, onOpenChange }) => {
   const gridOptions = [
     { name: 'All', id: GRID_OPTION.ALL },
     { name: 'Main grid', id: GRID_OPTION.MAIN },
@@ -17,7 +17,7 @@ const BlueprintGridList = ({ blueprint, selectedGrid, onGridChange }) => {
   ];
 
   return (
-    <Accordion elevation={2}>
+    <Accordion elevation={2} onChange={onOpenChange}>
       <AccordionSummary
         sx={{ alignItems: 'center' }}
         expandIcon={<ExpandMoreIcon />}
@@ -60,6 +60,7 @@ BlueprintGridList.propTypes = {
     PropTypes.number,
   ]).isRequired,
   onGridChange: PropTypes.func.isRequired,
+  onOpenChange: PropTypes.func.isRequired,
 };
 
 export default BlueprintGridList;
