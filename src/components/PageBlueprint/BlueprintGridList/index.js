@@ -2,6 +2,7 @@ import {
   Accordion, AccordionDetails, AccordionSummary,
   MenuList, MenuItem,
   Typography,
+  useTheme,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import PropTypes from 'prop-types';
@@ -15,9 +16,25 @@ const BlueprintGridList = ({ blueprint, selectedGrid, onGridChange, onOpenChange
     { name: 'Main grid', id: GRID_OPTION.MAIN },
     ...blueprint.subGrids.map((grid, index) => ({ name: grid.name, id: index })),
   ];
+  const theme = useTheme();
+
+  const onAccordionTransitionExited = () => {
+    onOpenChange(false);
+  };
+
+  const onAccordionTransitionEnter = () => {
+    onOpenChange(true);
+  };
 
   return (
-    <Accordion elevation={2} onChange={onOpenChange}>
+    <Accordion
+      elevation={2}
+      TransitionProps={{
+        onEnter: onAccordionTransitionEnter,
+        onExited: onAccordionTransitionExited,
+        timeout: theme.transitions.duration.shorter,
+      }}
+    >
       <AccordionSummary
         sx={{ alignItems: 'center' }}
         expandIcon={<ExpandMoreIcon />}

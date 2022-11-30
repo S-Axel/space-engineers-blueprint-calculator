@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Grid from '@mui/material/Unstable_Grid2';
+import { useTheme } from '@mui/material';
 
 import BlueprintTitle from './BlueprintTitle';
 import BlueprintGridList from './BlueprintGridList';
@@ -18,6 +19,14 @@ const PageBlueprint = ({ blueprint }) => {
     listOpen: false,
   });
 
+  const theme = useTheme();
+
+  const transition = {
+    transitionProperty: 'margin, width',
+    transitionDuration: `${theme.transitions.duration.shortest}ms`,
+    transitionTimingFunction: theme.transitions.easing.easeInOut,
+  };
+
   const onGridChangeHandler = (newGrid) => {
     setState((prevState) => ({
       ...prevState,
@@ -26,7 +35,7 @@ const PageBlueprint = ({ blueprint }) => {
     }));
   };
 
-  const onGridListOpenChangeHandler = (event, isExpanded) => {
+  const onGridListOpenChangeHandler = (isExpanded) => {
     setState((prevState) => ({ ...prevState, listOpen: isExpanded }));
   };
 
@@ -52,19 +61,34 @@ const PageBlueprint = ({ blueprint }) => {
         </Grid>
       </Grid>
       <Grid container xs={12}>
-        <Grid xs={12} mdOffset={state.listOpen ? 3 : 0} md={state.listOpen ? 9 : 12}>
+        <Grid
+          xs={12}
+          md={state.listOpen ? 9 : 12}
+          mdOffset={state.listOpen ? 3 : 0}
+          sx={transition}
+        >
           <BlueprintGridIngredients
             title="Blocks"
             ingredients={state.selectedGridInfo.recipe.blocks}
           />
         </Grid>
-        <Grid xs={12} mdOffset={state.listOpen ? 3 : 0} md={state.listOpen ? 9 : 6}>
+        <Grid
+          xs={12}
+          mdOffset={state.listOpen ? 3 : 0}
+          md={state.listOpen ? 9 : 6}
+          sx={transition}
+        >
           <BlueprintGridIngredients
             title="Components"
             ingredients={state.selectedGridInfo.recipe.components}
           />
         </Grid>
-        <Grid xs={12} mdOffset={state.listOpen ? 3 : 0} md={state.listOpen ? 9 : 6}>
+        <Grid
+          xs={12}
+          mdOffset={state.listOpen ? 3 : 0}
+          md={state.listOpen ? 9 : 6}
+          sx={transition}
+        >
           <BlueprintGridIngots ingots={state.selectedGridInfo.recipe.ingots} />
         </Grid>
       </Grid>
