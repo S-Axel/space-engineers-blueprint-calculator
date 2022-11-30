@@ -28,8 +28,8 @@ const BlueprintGridIngots = ({ ingots }) => {
           />
         )}
       />
-      <CardContent>
-        <Table>
+      <CardContent sx={{ overflowX: 'auto' }}>
+        <Table padding="normal" size="small">
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
