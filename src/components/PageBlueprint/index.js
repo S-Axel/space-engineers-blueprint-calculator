@@ -60,37 +60,35 @@ const PageBlueprint = ({ blueprint }) => {
           />
         </Grid>
       </Grid>
-      <Grid container xs={12}>
-        <Grid
-          xs={12}
-          md={state.listOpen ? 9 : 12}
-          mdOffset={state.listOpen ? 3 : 0}
-          sx={transition}
-        >
-          <BlueprintGridIngredients
-            title="Blocks"
-            ingredients={state.selectedGridInfo.recipe.blocks}
-          />
-        </Grid>
-        <Grid
-          xs={12}
-          mdOffset={state.listOpen ? 3 : 0}
-          md={state.listOpen ? 9 : 6}
-          sx={transition}
-        >
-          <BlueprintGridIngredients
-            title="Components"
-            ingredients={state.selectedGridInfo.recipe.components}
-          />
-        </Grid>
-        <Grid
-          xs={12}
-          mdOffset={state.listOpen ? 3 : 0}
-          md={state.listOpen ? 9 : 6}
-          sx={transition}
-        >
-          <BlueprintGridIngots ingots={state.selectedGridInfo.recipe.ingots} />
-        </Grid>
+      <Grid
+        xs={12}
+        md={state.listOpen ? 9 : 12}
+        mdOffset={state.listOpen ? 3 : 0}
+        sx={transition}
+      >
+        <BlueprintGridIngredients
+          title="Blocks"
+          ingredients={state.selectedGridInfo.recipe.blocks}
+        />
+      </Grid>
+      <Grid
+        xs={12}
+        mdOffset={state.listOpen ? 3 : 0}
+        md={state.listOpen ? 9 : 6}
+        sx={transition}
+      >
+        <BlueprintGridIngredients
+          title="Components"
+          ingredients={state.selectedGridInfo.recipe.components}
+        />
+      </Grid>
+      <Grid
+        xs={12}
+        mdOffset={state.listOpen ? 3 : 0}
+        md={state.listOpen ? 9 : 6}
+        sx={transition}
+      >
+        <BlueprintGridIngots ingots={state.selectedGridInfo.recipe.ingots} />
       </Grid>
     </>
   );
