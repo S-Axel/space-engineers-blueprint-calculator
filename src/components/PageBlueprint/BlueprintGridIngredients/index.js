@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   Card,
   CardContent,
@@ -8,14 +9,13 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import PropTypes from 'prop-types';
 
-import roundToDec from '../../../utils/roundToDec';
 import { propTypeIngredient } from '../../../prop_types';
+import roundToDec from '../../../utils/roundToDec';
 
-const BlueprintGridBlocks = ({ blocks }) => (
+const BlueprintGridIngredients = ({ title, ingredients, action }) => (
   <Card>
-    <CardHeader title="Components" />
+    <CardHeader title={title} action={action} />
     <CardContent sx={{ overflowX: 'auto' }}>
       <Table padding="normal" size="small">
         <TableHead>
@@ -25,7 +25,7 @@ const BlueprintGridBlocks = ({ blocks }) => (
           </TableRow>
         </TableHead>
         <TableBody>
-          {blocks.map((block) => (
+          {ingredients.map((block) => (
             <TableRow key={block.name}>
               <TableCell>{block.name}</TableCell>
               <TableCell>{roundToDec(block.count, 1)}</TableCell>
@@ -37,8 +37,14 @@ const BlueprintGridBlocks = ({ blocks }) => (
   </Card>
 );
 
-BlueprintGridBlocks.propTypes = {
-  blocks: PropTypes.arrayOf(propTypeIngredient).isRequired,
+BlueprintGridIngredients.propTypes = {
+  title: PropTypes.string.isRequired,
+  ingredients: PropTypes.arrayOf(propTypeIngredient).isRequired,
+  action: PropTypes.node,
 };
 
-export default BlueprintGridBlocks;
+BlueprintGridIngredients.defaultProps = {
+  action: null,
+};
+
+export default BlueprintGridIngredients;
