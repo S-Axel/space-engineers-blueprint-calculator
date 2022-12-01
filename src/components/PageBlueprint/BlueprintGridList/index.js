@@ -28,7 +28,6 @@ const BlueprintGridList = ({ blueprint, selectedGrid, onGridChange, onOpenChange
 
   return (
     <Accordion
-      elevation={2}
       TransitionProps={{
         onEnter: onAccordionTransitionEnter,
         onExited: onAccordionTransitionExited,

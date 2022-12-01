@@ -6,7 +6,7 @@ import FileDnd from '../FileDnd';
 
 const PageFileDnd = ({ updateFile }) => (
   <Grid xs={10} mdOffset={1}>
-    <Card elevation={2}>
+    <Card>
       <CardHeader title="Import a blueprint to be analyzed" titleTypographyProps={{ component: 'h2', variant: 'h5' }} />
       <CardContent>
         <FileDnd updateFile={updateFile} />

@@ -14,7 +14,7 @@ const BlueprintGridTitle = ({ selectedGrid, selectedGridInfo }) => {
     ? `Sub grid: ${selectedGridInfo.name}`
     : gridOptionStrings[selectedGrid];
   return (
-    <Card elevation={2}>
+    <Card>
       <CardHeader title={title} />
       <CardContent sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
         <Typography>{`Number of blocks: ${selectedGridInfo.blockCount}`}</Typography>
