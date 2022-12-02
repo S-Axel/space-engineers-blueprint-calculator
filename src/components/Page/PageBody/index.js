@@ -3,11 +3,13 @@ import { Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 const PageBody = ({ children }) => (
-  <Box sx={{
-    flexGrow: 1,
-    margin: { xs: '16px', sm: '32px', md: '32px auto', lg: '32px 200px', xl: '32px auto' },
-    width: { xs: 'auto', md: '840px', lg: 'auto', xl: '1040px' },
-  }}
+  <Box
+    component="section"
+    sx={{
+      flexGrow: 1,
+      margin: { xs: '16px', sm: '32px', md: '32px auto', lg: '32px 200px', xl: '32px auto' },
+      width: { xs: 'auto', md: '840px', lg: 'auto', xl: '1040px' },
+    }}
   >
     <Grid
       container
