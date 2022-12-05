@@ -12,18 +12,22 @@ const getDlcString = (dlc) => {
   return 'No DLC required';
 };
 
+const sx = {
+  color: 'primary.contrastText',
+};
+
 const BlueprintTitle = ({ blueprint }) => {
   const dlcString = getDlcString(blueprint.dlc);
 
   return (
     <>
-      <Typography variant="h5" component="h2">
+      <Typography variant="h5" component="h2" sx={{ ...sx, fontWeight: 500 }}>
         {blueprint.name}
       </Typography>
-      <Typography variant="caption" component="p">
+      <Typography variant="caption" component="p" sx={sx}>
         {`From: ${blueprint.owner.name}`}
       </Typography>
-      <Typography variant="caption" component="p">
+      <Typography variant="caption" component="p" sx={sx}>
         {dlcString}
       </Typography>
     </>

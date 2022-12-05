@@ -32,8 +32,8 @@ const FileDnd = ({ updateFile }) => {
         <Box sx={{
           padding: { xs: '32px 16px', sm: '64px 16px' },
           borderStyle: 'dashed',
-          borderWidth: '2px',
-          borderColor: 'primary.light',
+          borderWidth: '1px',
+          borderColor: 'secondary.main',
           borderRadius: 1,
           display: 'flex',
           flexDirection: 'column',
@@ -41,7 +41,7 @@ const FileDnd = ({ updateFile }) => {
         }}
         >
           <Typography sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <FileDownloadIcon sx={{ fontSize: '2rem' }} />
+            <FileDownloadIcon sx={{ fontSize: '2rem', color: 'primary.main' }} />
             drag and drop a file
           </Typography>
           <Typography>or click to browse</Typography>
@@ -59,10 +59,6 @@ const FileDnd = ({ updateFile }) => {
 
 FileDnd.propTypes = {
   updateFile: PropTypes.func.isRequired,
-};
-
-FileDnd.defaultProps = {
-  error: '',
 };
 
 export default FileDnd;

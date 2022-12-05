@@ -6,9 +6,9 @@ import { AppBar, Toolbar, Typography } from '@mui/material';
  * @constructor
  */
 const PageHeader = () => (
-  <AppBar sx={{ position: 'static' }}>
+  <AppBar color="transparent" sx={{ position: 'static' }} elevation={1}>
     <Toolbar>
-      <Typography component="h1" variant="h6">Space Engineers Blueprint Calculator</Typography>
+      <Typography component="h1" variant="h6" sx={{ color: 'common.white' }}>Space Engineers BP Calculator</Typography>
     </Toolbar>
   </AppBar>
 );
