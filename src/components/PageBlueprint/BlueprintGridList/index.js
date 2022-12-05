@@ -28,6 +28,7 @@ const BlueprintGridList = ({ blueprint, selectedGrid, onGridChange, onOpenChange
 
   return (
     <Accordion
+      variant="outlined"
       TransitionProps={{
         onEnter: onAccordionTransitionEnter,
         onExited: onAccordionTransitionExited,
@@ -41,7 +42,7 @@ const BlueprintGridList = ({ blueprint, selectedGrid, onGridChange, onOpenChange
         aria-controls="grid_list_content"
       >
         <span>
-          <Typography component="span">Grids</Typography>
+          <Typography component="span" variant="h6">Grids</Typography>
           <Typography
             component="span"
             variant="body2"

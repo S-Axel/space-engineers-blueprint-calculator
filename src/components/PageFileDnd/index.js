@@ -1,17 +1,19 @@
-import { Card, CardContent, CardHeader } from '@mui/material';
+import { CardContent } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import PropTypes from 'prop-types';
 
 import FileDnd from '../FileDnd';
+import CustomCard from '../CustomCard';
+import CustomCardHeader from '../CustomCardHeader';
 
 const PageFileDnd = ({ updateFile }) => (
   <Grid xs={10} mdOffset={1}>
-    <Card>
-      <CardHeader title="Import a blueprint to be analyzed" titleTypographyProps={{ component: 'h2', variant: 'h5' }} />
+    <CustomCard>
+      <CustomCardHeader title="Import a blueprint to be analyzed" titleTypographyProps={{ component: 'h2' }} />
       <CardContent>
         <FileDnd updateFile={updateFile} />
       </CardContent>
-    </Card>
+    </CustomCard>
   </Grid>
 );
 

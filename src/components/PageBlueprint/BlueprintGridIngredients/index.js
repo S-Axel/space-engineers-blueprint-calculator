@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import {
-  Card,
   CardContent,
-  CardHeader,
   Table,
   TableBody,
   TableCell,
@@ -12,10 +10,12 @@ import {
 
 import { propTypeIngredient } from '../../../prop_types';
 import roundToDec from '../../../utils/roundToDec';
+import CustomCard from '../../CustomCard';
+import CustomCardHeader from '../../CustomCardHeader';
 
 const BlueprintGridIngredients = ({ title, ingredients, action }) => (
-  <Card>
-    <CardHeader title={title} action={action} />
+  <CustomCard>
+    <CustomCardHeader title={title} action={action} />
     <CardContent sx={{ overflowX: 'auto' }}>
       <Table padding="normal" size="small">
         <TableHead>
@@ -34,7 +34,7 @@ const BlueprintGridIngredients = ({ title, ingredients, action }) => (
         </TableBody>
       </Table>
     </CardContent>
-  </Card>
+  </CustomCard>
 );
 
 BlueprintGridIngredients.propTypes = {
