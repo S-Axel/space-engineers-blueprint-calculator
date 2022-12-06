@@ -7,8 +7,6 @@ const Page = ({ children }) => (
       minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
-      position: 'relative',
-      overflow: 'hidden',
     }}
   >
     {children}

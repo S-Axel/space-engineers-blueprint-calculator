@@ -10,6 +10,7 @@ import GRID_OPTION from '../../constants/grid_option';
 import { getSelectedGridInfo } from '../../services/blueprintService';
 import BlueprintGridIngots from './BlueprintGridIngots';
 import BlueprintGridIngredients from './BlueprintGridIngredients';
+import AddBlueprintButton from './AddBlueprintButton';
 
 const PageBlueprint = ({ blueprint }) => {
   const [state, setState] = useState({
@@ -39,10 +40,29 @@ const PageBlueprint = ({ blueprint }) => {
     setState((prevState) => ({ ...prevState, listOpen: isExpanded }));
   };
 
+  const onAddBlueprintButtonClickHandler = () => {
+    // eslint-disable-next-line no-console
+    console.log('Add blueprint button clicked');
+  };
+
   return (
     <>
-      <Grid xs={12}>
+      <Grid xs={3} sm={7} md={11}>
         <BlueprintTitle blueprint={blueprint} />
+      </Grid>
+      <Grid
+        xs={1}
+        sx={{
+          position: 'sticky',
+          top: '32px',
+          zIndex: 'fab',
+          textAlign: 'right',
+        }}
+      >
+        <AddBlueprintButton
+          onClick={onAddBlueprintButtonClickHandler}
+          sx={{ position: 'relative', right: { lg: '-96px' } }}
+        />
       </Grid>
       <Grid container xs={12} sx={{ position: 'relative' }}>
         <Grid xs={12} md={3} sx={{ position: { md: state.listOpen ? 'absolute' : 'static' } }}>
