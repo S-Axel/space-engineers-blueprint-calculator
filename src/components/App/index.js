@@ -34,7 +34,7 @@ const App = () => {
         <PageBody>
           {
             blueprint
-              ? <PageBlueprint blueprint={blueprint} />
+              ? <PageBlueprint blueprint={blueprint} updateFile={updateFile} />
               : <PageFileDnd updateFile={updateFile} />
           }
         </PageBody>

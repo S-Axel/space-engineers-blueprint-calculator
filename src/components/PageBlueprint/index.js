@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useTheme } from '@mui/material';
+import PropTypes from 'prop-types';
 
 import BlueprintTitle from './BlueprintTitle';
 import BlueprintGridList from './BlueprintGridList';
@@ -10,9 +11,9 @@ import GRID_OPTION from '../../constants/grid_option';
 import { getSelectedGridInfo } from '../../services/blueprintService';
 import BlueprintGridIngots from './BlueprintGridIngots';
 import BlueprintGridIngredients from './BlueprintGridIngredients';
-import AddBlueprintButton from './AddBlueprintButton';
+import ImportBlueprintModal from './ImportBlueprintModal';
 
-const PageBlueprint = ({ blueprint }) => {
+const PageBlueprint = ({ blueprint, updateFile }) => {
   const [state, setState] = useState({
     // possible values for selectedGrids: 'all', 'main', any subgrid index as a number
     selectedGrid: GRID_OPTION.ALL,
@@ -40,11 +41,6 @@ const PageBlueprint = ({ blueprint }) => {
     setState((prevState) => ({ ...prevState, listOpen: isExpanded }));
   };
 
-  const onAddBlueprintButtonClickHandler = () => {
-    // eslint-disable-next-line no-console
-    console.log('Add blueprint button clicked');
-  };
-
   return (
     <>
       <Grid xs={3} sm={7} md={11}>
@@ -59,9 +55,9 @@ const PageBlueprint = ({ blueprint }) => {
           textAlign: 'right',
         }}
       >
-        <AddBlueprintButton
-          onClick={onAddBlueprintButtonClickHandler}
+        <ImportBlueprintModal
           sx={{ position: 'relative', right: { lg: '-96px' } }}
+          updateFile={updateFile}
         />
       </Grid>
       <Grid container xs={12} sx={{ position: 'relative' }}>
@@ -116,6 +112,7 @@ const PageBlueprint = ({ blueprint }) => {
 
 PageBlueprint.propTypes = {
   blueprint: propTypeBlueprint.isRequired,
+  updateFile: PropTypes.func.isRequired,
 };
 
 export default PageBlueprint;
