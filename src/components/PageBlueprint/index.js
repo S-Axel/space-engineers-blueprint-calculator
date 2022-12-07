@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useTheme } from '@mui/material';
 import PropTypes from 'prop-types';
@@ -20,6 +20,14 @@ const PageBlueprint = ({ blueprint, updateFile }) => {
     selectedGridInfo: getSelectedGridInfo(blueprint, GRID_OPTION.ALL),
     listOpen: false,
   });
+
+  useEffect(() => {
+    setState((prevState) => ({
+      ...prevState,
+      selectedGrid: GRID_OPTION.ALL,
+      selectedGridInfo: getSelectedGridInfo(blueprint, GRID_OPTION.ALL),
+    }));
+  }, [blueprint]);
 
   const theme = useTheme();
 
