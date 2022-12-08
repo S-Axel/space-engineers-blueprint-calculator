@@ -4,11 +4,14 @@
  * @param {number} decimals - The number of decimal places to round to.
  * @returns {string} The rounded number as a string.
  */
-import trimWithChar from '../trimWithChar';
-
 const roundToDec = (num, decimals) => {
   const rounded = num.toFixed(decimals);
-  return trimWithChar(rounded, '0.');
+
+  return rounded
+    // trim 1.0 to 1
+    .replace(/\.0+$/, '')
+    // trim 1.10 to 1.1
+    .replace(/(\.\d+?)0+$/, '$1');
 };
 
 export default roundToDec;
