@@ -1,6 +1,6 @@
 const INGREDIENT_COLUMN = {
   NAME: {
-    id: 'name',
+    id: 'displayNameValue',
     label: 'Name',
   },
   COUNT: {
