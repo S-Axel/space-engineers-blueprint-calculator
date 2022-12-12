@@ -1,20 +1,32 @@
 import gameBlocks from '../../game_data/blocks.json';
 import gameComponents from '../../game_data/components.json';
+import gameIngots from '../../game_data/ingots.json';
 import xmlToJsObject from '../../utils/xmlToJsObject';
 
 /**
  * Block
- * @typedef {{name: string, count: number}} Block
+ * @typedef {{
+ *   name: string,
+ *   count: number,
+ *   size: string,
+ *   displayNameId: string,
+ *   displayNameValue: string
+ * }} Block
  */
 
 /**
  * Component
- * @typedef {{name: string, count: number}} Component
+ * @typedef {{
+ *   name: string,
+ *   count: number,
+ *   displayNameId: string,
+ *   displayNameValue: string
+ * }} Component
  */
 
 /**
  * Ingot
- * @typedef {{name: string, count: number}} Ingot
+ * @typedef {{name: string, count: number, displayNameId: string, displayNameValue: string}} Ingot
  */
 
 /**
@@ -51,14 +63,21 @@ import xmlToJsObject from '../../utils/xmlToJsObject';
 /**
  * Compute blocks for a recipe
  * @param {string[]} blocks
+ * @param {string} size
  * @return {Block[]}
  */
-const computeBlocks = (blocks) => {
+const computeBlocks = (blocks, size) => {
   const blocksCount = blocks.reduce(
     (acc, block) => (acc[block] ? { ...acc, [block]: acc[block] + 1 } : { ...acc, [block]: 1 }),
     {},
   );
-  return Object.entries(blocksCount).map(([name, count]) => ({ name, count }));
+  return Object.entries(blocksCount).map(([name, count]) => ({
+    name,
+    size,
+    count,
+    displayNameId: gameBlocks[name].name,
+    displayNameValue: name,
+  }));
 };
 
 /**
@@ -76,7 +95,12 @@ const computeComponents = (blocks) => {
     },
     {},
   );
-  return Object.entries(components).map(([name, count]) => ({ name, count }));
+  return Object.entries(components).map(([name, count]) => ({
+    name,
+    count,
+    displayNameId: gameComponents[name].name,
+    displayNameValue: name,
+  }));
 };
 
 /**
@@ -94,7 +118,12 @@ const computeIngots = (components) => {
     },
     {},
   );
-  return Object.entries(ingots).map(([name, count]) => ({ name, count }));
+  return Object.entries(ingots).map(([name, count]) => ({
+    name,
+    count,
+    displayNameId: gameIngots[name].name,
+    displayNameValue: name,
+  }));
 };
 
 /**
@@ -195,10 +224,10 @@ const getXmlGridBlocks = (xmlGrid) => {
  */
 const computeGrid = (xmlGrid) => {
   const xmlBlocks = getXmlGridBlocks(xmlGrid);
-  const blocks = computeBlocks(xmlBlocks);
+  const size = xmlGrid.GridSizeEnum;
+  const blocks = computeBlocks(xmlBlocks, size);
 
   const name = xmlGrid.DisplayName;
-  const size = xmlGrid.GridSizeEnum;
   const recipe = computeRecipe(blocks);
   const blockCount = computeRecipeBlockCount(recipe);
   const mass = computeRecipeMass(recipe);

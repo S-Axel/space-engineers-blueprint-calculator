@@ -1,6 +1,6 @@
 import computeBlueprint from './computeBlueprint';
 import getSelectedGridInfo from './getSelectedGridInfo';
-import grid4014 from '../../mocks/blueprints/grid4014';
+import grid4014 from '../../mocks/xmlBlueprints/grid4014';
 import GRID_OPTION from '../../constants/grid_option';
 
 describe('blueprintService/getSelectedGridInfo', () => {

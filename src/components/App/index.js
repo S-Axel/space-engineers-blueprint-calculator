@@ -6,7 +6,7 @@ import PageHeader from '../Page/PageHeader';
 import PageFooter from '../Page/PageFooter';
 import PageBody from '../Page/PageBody';
 import Page from '../Page';
-import { computeBlueprint } from '../../services/blueprintService';
+import { computeBlueprint, translateBlueprint } from '../../services/blueprintService';
 import PageBlueprint from '../PageBlueprint';
 import PageFileDnd from '../PageFileDnd';
 
@@ -17,6 +17,7 @@ const App = () => {
     try {
       const xml = await newFile.text();
       const newBlueprint = computeBlueprint(xml);
+      translateBlueprint(newBlueprint);
       setBlueprint(newBlueprint);
       // eslint-disable-next-line no-console
       console.log(newBlueprint);

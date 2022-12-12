@@ -1,120 +1,218 @@
-export default
-`<?xml version="1.0"?>
-<Definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <ShipBlueprints>
-    <ShipBlueprint xsi:type="MyObjectBuilder_ShipBlueprintDefinition">
-      <Id Type="MyObjectBuilder_ShipBlueprintDefinition" Subtype="Static Grid 7420" />
-      <DisplayName>FRChewbie</DisplayName>
-      <CubeGrids>
-        <CubeGrid>
-          <SubtypeName />
-          <EntityId>80035999843747420</EntityId>
-          <PersistentFlags>CastShadows InScene</PersistentFlags>
-          <PositionAndOrientation>
-            <Position x="34061.578708802874" y="25683.168684342083" z="43883.157531473888" />
-            <Forward x="-0.753832638" y="0.619195163" z="0.21984911" />
-            <Up x="0.553996742" y="0.419040918" z="0.719369352" />
-            <Orientation>
-              <X>0.5371481</X>
-              <Y>0.5669184</Y>
-              <Z>0.04417487</Z>
-              <W>0.622996032</W>
-            </Orientation>
-          </PositionAndOrientation>
-          <LocalPositionAndOrientation xsi:nil="true" />
-          <GridSizeEnum>Large</GridSizeEnum>
-          <CubeBlocks>
-            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
-              <SubtypeName>LargeBlockArmorBlock</SubtypeName>
-              <EntityId>104315864494979434</EntityId>
-              <IntegrityPercent>1.52590219E-05</IntegrityPercent>
-              <BuildPercent>1.52590219E-05</BuildPercent>
-              <BuiltBy>144115188075855914</BuiltBy>
-            </MyObjectBuilder_CubeBlock>
-            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_MotorStator">
-              <SubtypeName>LargeStator</SubtypeName>
-              <EntityId>82057686650597407</EntityId>
-              <Min x="0" y="1" z="0" />
-              <IntegrityPercent>1.52590219E-05</IntegrityPercent>
-              <BuildPercent>1.52590219E-05</BuildPercent>
-              <Owner>144115188075855914</Owner>
-              <BuiltBy>144115188075855914</BuiltBy>
-              <ShareMode>Faction</ShareMode>
-              <ShowOnHUD>false</ShowOnHUD>
-              <ShowInTerminal>true</ShowInTerminal>
-              <ShowInToolbarConfig>true</ShowInToolbarConfig>
-              <ShowInInventory>true</ShowInInventory>
-              <NumberInGrid>1</NumberInGrid>
-              <Enabled>true</Enabled>
-              <TopBlockId>139225067364315154</TopBlockId>
-              <ShareInertiaTensor>false</ShareInertiaTensor>
-              <SafetyDetach>5</SafetyDetach>
-              <RotorEntityId xsi:nil="true" />
-              <WeldedEntityId xsi:nil="true" />
-              <TargetVelocity>0</TargetVelocity>
-              <MinAngle xsi:nil="true" />
-              <MaxAngle xsi:nil="true" />
-              <CurrentAngle>0</CurrentAngle>
-              <LimitsActive>false</LimitsActive>
-              <RotorLock>false</RotorLock>
-              <Torque>3.36E+07</Torque>
-              <BrakingTorque>0</BrakingTorque>
-            </MyObjectBuilder_CubeBlock>
-          </CubeBlocks>
-          <IsStatic>true</IsStatic>
-          <DisplayName>Static Grid 7420</DisplayName>
-          <DestructibleBlocks>true</DestructibleBlocks>
-          <IsRespawnGrid>false</IsRespawnGrid>
-          <LocalCoordSys>59</LocalCoordSys>
-          <TargetingTargets />
-        </CubeGrid>
-        <CubeGrid>
-          <SubtypeName />
-          <EntityId>97340751156840770</EntityId>
-          <PersistentFlags>CastShadows InScene</PersistentFlags>
-          <PositionAndOrientation>
-            <Position x="34063.197033082659" y="25684.392607071575" z="43885.258483622325" />
-            <Forward x="-0.753832638" y="0.619195163" z="0.21984911" />
-            <Up x="0.553996742" y="0.419040918" z="0.719369352" />
-            <Orientation>
-              <X>0.5371481</X>
-              <Y>0.5669184</Y>
-              <Z>0.04417487</Z>
-              <W>0.622996032</W>
-            </Orientation>
-          </PositionAndOrientation>
-          <LocalPositionAndOrientation xsi:nil="true" />
-          <GridSizeEnum>Large</GridSizeEnum>
-          <CubeBlocks>
-            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_MotorRotor">
-              <SubtypeName>LargeRotor</SubtypeName>
-              <EntityId>139225067364315154</EntityId>
-              <IntegrityPercent>1.52590219E-05</IntegrityPercent>
-              <BuildPercent>1.52590219E-05</BuildPercent>
-              <BuiltBy>144115188075855914</BuiltBy>
-              <ParentEntityId>82057686650597407</ParentEntityId>
-              <YieldLastComponent>false</YieldLastComponent>
-            </MyObjectBuilder_CubeBlock>
-            <MyObjectBuilder_CubeBlock xsi:type="MyObjectBuilder_CubeBlock">
-              <SubtypeName>LargeBlockArmorBlock</SubtypeName>
-              <EntityId>100077412693494353</EntityId>
-              <Min x="0" y="1" z="0" />
-              <IntegrityPercent>1.52590219E-05</IntegrityPercent>
-              <BuildPercent>1.52590219E-05</BuildPercent>
-              <BuiltBy>144115188075855914</BuiltBy>
-            </MyObjectBuilder_CubeBlock>
-          </CubeBlocks>
-          <DisplayName>Large Grid 770</DisplayName>
-          <DestructibleBlocks>true</DestructibleBlocks>
-          <IsRespawnGrid>false</IsRespawnGrid>
-          <LocalCoordSys>0</LocalCoordSys>
-          <TargetingTargets />
-        </CubeGrid>
-      </CubeGrids>
-      <EnvironmentType>None</EnvironmentType>
-      <WorkshopId>0</WorkshopId>
-      <OwnerSteamId>76561198047419561</OwnerSteamId>
-      <Points>0</Points>
-    </ShipBlueprint>
-  </ShipBlueprints>
-</Definitions>`;
+export default {
+  get: () => ({
+    owner:
+      {
+        name: 'FRChewbie',
+        steamId: '76561198047419561',
+      },
+    workshopId: '0',
+    name: 'Static Grid 7420',
+    mainGrid: {
+      name: 'Static Grid 7420',
+      size: 'Large',
+      recipe: {
+        blocks: [
+          {
+            name: 'LargeBlockArmorBlock',
+            size: 'Large',
+            count: 1,
+            displayNameId: 'DisplayName_Block_LightArmorBlock',
+            displayNameValue: 'LargeBlockArmorBlock',
+          },
+          {
+            name: 'LargeStator',
+            size: 'Large',
+            count: 1,
+            displayNameId: 'DisplayName_Block_Rotor',
+            displayNameValue: 'LargeStator',
+          },
+        ],
+        components:
+          [
+            {
+              name: 'SteelPlate',
+              count: 40,
+              displayNameId: 'DisplayName_Item_SteelPlate',
+              displayNameValue: 'SteelPlate',
+            },
+            {
+              name: 'Construction',
+              count: 10,
+              displayNameId: 'DisplayName_Item_ConstructionComponent',
+              displayNameValue: 'Construction',
+            },
+            {
+              name: 'LargeTube',
+              count: 4,
+              displayNameId: 'DisplayName_Item_LargeSteelTube',
+              displayNameValue: 'LargeTube',
+            },
+            {
+              name: 'Motor',
+              count: 4,
+              displayNameId: 'DisplayName_Item_Motor',
+              displayNameValue: 'Motor',
+            },
+            {
+              name: 'Computer',
+              count: 2,
+              displayNameId: 'DisplayName_Item_Computer',
+              displayNameValue: 'Computer',
+            },
+          ],
+        ingots: [
+          {
+            name: 'Iron',
+            count: 1121,
+            displayNameId: 'DisplayName_Item_IronIngot',
+            displayNameValue: 'Iron',
+          },
+          {
+            name: 'Nickel',
+            count: 20,
+            displayNameId: 'DisplayName_Item_NickelIngot',
+            displayNameValue: 'Nickel',
+          },
+          {
+            name: 'Silicon',
+            count: 0.4,
+            displayNameId: 'DisplayName_Item_SiliconWafer',
+            displayNameValue: 'Silicon',
+          },
+        ],
+      },
+      blockCount: 2,
+      mass: 1076.4,
+      pcuCost: 101,
+    },
+    subGrids: [
+      {
+        name: 'Large Grid 770',
+        size: 'Large',
+        recipe: {
+          blocks: [
+            {
+              name: 'LargeRotor',
+              size: 'Large',
+              count: 1,
+              displayNameId: 'DisplayName_Block_RotorPart',
+              displayNameValue: 'LargeRotor',
+            },
+            {
+              name: 'LargeBlockArmorBlock',
+              size: 'Large',
+              count: 1,
+              displayNameId: 'DisplayName_Block_LightArmorBlock',
+              displayNameValue: 'LargeBlockArmorBlock',
+            },
+          ],
+          components: [
+            {
+              name: 'SteelPlate',
+              count: 55,
+              displayNameId: 'DisplayName_Item_SteelPlate',
+              displayNameValue: 'SteelPlate',
+            },
+            {
+              name: 'LargeTube',
+              count: 6,
+              displayNameId: 'DisplayName_Item_LargeSteelTube',
+              displayNameValue: 'LargeTube',
+            },
+          ],
+          ingots: [
+            {
+              name: 'Iron',
+              count: 1335,
+              displayNameId: 'DisplayName_Item_IronIngot',
+              displayNameValue: 'Iron',
+            },
+          ],
+        },
+        blockCount: 2,
+        mass: 1250,
+        pcuCost: 2,
+      },
+    ],
+    recipe: {
+      blocks: [
+        {
+          name: 'LargeBlockArmorBlock',
+          size: 'Large',
+          count: 2,
+          displayNameId: 'DisplayName_Block_LightArmorBlock',
+          displayNameValue: 'Light Armor Block',
+        },
+        {
+          name: 'LargeStator',
+          size: 'Large',
+          count: 1,
+          displayNameId: 'DisplayName_Block_Rotor',
+          displayNameValue: 'Rotor',
+        },
+        {
+          name: 'LargeRotor',
+          size: 'Large',
+          count: 1,
+          displayNameId: 'DisplayName_Block_RotorPart',
+          displayNameValue: 'Rotor Part',
+        },
+      ],
+      components: [
+        {
+          name: 'SteelPlate',
+          count: 95,
+          displayNameId: 'DisplayName_Item_SteelPlate',
+          displayNameValue: 'Steel Plate',
+        },
+        {
+          name: 'Construction',
+          count: 10,
+          displayNameId: 'DisplayName_Item_ConstructionComponent',
+          displayNameValue: 'Construction Comp.',
+        },
+        {
+          name: 'LargeTube',
+          count: 10,
+          displayNameId: 'DisplayName_Item_LargeSteelTube',
+          displayNameValue: 'Large Steel Tube',
+        },
+        {
+          name: 'Motor',
+          count: 4,
+          displayNameId: 'DisplayName_Item_Motor',
+          displayNameValue: 'Motor',
+        },
+        {
+          name: 'Computer',
+          count: 2,
+          displayNameId: 'DisplayName_Item_Computer',
+          displayNameValue: 'Computer',
+        },
+      ],
+      ingots: [
+        {
+          name: 'Iron',
+          count: 2456,
+          displayNameId: 'DisplayName_Item_IronIngot',
+          displayNameValue: 'Iron Ingot',
+        },
+        {
+          name: 'Nickel',
+          count: 20,
+          displayNameId: 'DisplayName_Item_NickelIngot',
+          displayNameValue: 'Nickel Ingot',
+        },
+        {
+          name: 'Silicon',
+          count: 0.4,
+          displayNameId: 'DisplayName_Item_SiliconWafer',
+          displayNameValue: 'Silicon Wafer',
+        },
+      ],
+    },
+    blockCount: 4,
+    mass: 2326.4,
+    pcuCost: 103,
+  }),
+};

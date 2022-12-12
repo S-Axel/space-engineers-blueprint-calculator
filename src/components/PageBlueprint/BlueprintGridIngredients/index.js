@@ -73,7 +73,7 @@ const BlueprintGridIngredients = ({ title, ingredients, action }) => {
           <TableBody>
             {sortedIngredients.map((block) => (
               <TableRow key={block.name}>
-                <TableCell>{block.name}</TableCell>
+                <TableCell>{block.displayNameValue}</TableCell>
                 <TableCell>{roundToDec(block.count, 1)}</TableCell>
               </TableRow>
             ))}

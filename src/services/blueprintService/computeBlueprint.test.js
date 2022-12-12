@@ -1,9 +1,9 @@
 import computeBlueprint from './computeBlueprint';
-import miningShipBp from '../../mocks/blueprints/miningShipBp';
-import grid7782 from '../../mocks/blueprints/grid7782';
-import grid7420 from '../../mocks/blueprints/grid7420';
-import grid4014 from '../../mocks/blueprints/grid4014';
-import emptyBp from '../../mocks/blueprints/emptyBp';
+import miningShipBp from '../../mocks/xmlBlueprints/miningShipBp';
+import grid7782 from '../../mocks/xmlBlueprints/grid7782';
+import grid7420 from '../../mocks/xmlBlueprints/grid7420';
+import grid4014 from '../../mocks/xmlBlueprints/grid4014';
+import emptyBp from '../../mocks/xmlBlueprints/emptyBp';
 
 describe('blueprintService/computeBlueprint', () => {
   it('should return an object', () => {
@@ -82,39 +82,39 @@ describe('blueprintService/computeBlueprint', () => {
     // blocks
     expect(blueprint.mainGrid.recipe.blocks).toBeInstanceOf(Array);
     expect(blueprint.mainGrid.recipe.blocks.length).toBe(2);
-    expect(blueprint.mainGrid.recipe.blocks).toContainEqual({ name: 'LargeBlockArmorBlock', count: 1 });
-    expect(blueprint.mainGrid.recipe.blocks).toContainEqual({ name: 'LargeStator', count: 1 });
+    expect(blueprint.mainGrid.recipe.blocks).toContainEqual({ name: 'LargeBlockArmorBlock', count: 1, size: 'Large', displayNameId: 'DisplayName_Block_LightArmorBlock', displayNameValue: 'LargeBlockArmorBlock' });
+    expect(blueprint.mainGrid.recipe.blocks).toContainEqual({ name: 'LargeStator', count: 1, size: 'Large', displayNameId: 'DisplayName_Block_Rotor', displayNameValue: 'LargeStator' });
     // components
     expect(blueprint.mainGrid.recipe.components).toBeInstanceOf(Array);
     expect(blueprint.mainGrid.recipe.components.length).toBe(5);
-    expect(blueprint.mainGrid.recipe.components).toContainEqual({ name: 'SteelPlate', count: 40 });
-    expect(blueprint.mainGrid.recipe.components).toContainEqual({ name: 'Construction', count: 10 });
-    expect(blueprint.mainGrid.recipe.components).toContainEqual({ name: 'LargeTube', count: 4 });
-    expect(blueprint.mainGrid.recipe.components).toContainEqual({ name: 'Motor', count: 4 });
-    expect(blueprint.mainGrid.recipe.components).toContainEqual({ name: 'Computer', count: 2 });
+    expect(blueprint.mainGrid.recipe.components).toContainEqual({ name: 'SteelPlate', count: 40, displayNameId: 'DisplayName_Item_SteelPlate', displayNameValue: 'SteelPlate' });
+    expect(blueprint.mainGrid.recipe.components).toContainEqual({ name: 'Construction', count: 10, displayNameId: 'DisplayName_Item_ConstructionComponent', displayNameValue: 'Construction' });
+    expect(blueprint.mainGrid.recipe.components).toContainEqual({ name: 'LargeTube', count: 4, displayNameId: 'DisplayName_Item_LargeSteelTube', displayNameValue: 'LargeTube' });
+    expect(blueprint.mainGrid.recipe.components).toContainEqual({ name: 'Motor', count: 4, displayNameId: 'DisplayName_Item_Motor', displayNameValue: 'Motor' });
+    expect(blueprint.mainGrid.recipe.components).toContainEqual({ name: 'Computer', count: 2, displayNameId: 'DisplayName_Item_Computer', displayNameValue: 'Computer' });
     // ingots
     expect(blueprint.mainGrid.recipe.ingots).toBeInstanceOf(Array);
     expect(blueprint.mainGrid.recipe.ingots.length).toBe(3);
-    expect(blueprint.mainGrid.recipe.ingots).toContainEqual({ name: 'Iron', count: 1121 });
-    expect(blueprint.mainGrid.recipe.ingots).toContainEqual({ name: 'Nickel', count: 20 });
-    expect(blueprint.mainGrid.recipe.ingots).toContainEqual({ name: 'Silicon', count: 0.4 });
+    expect(blueprint.mainGrid.recipe.ingots).toContainEqual({ name: 'Iron', count: 1121, displayNameId: 'DisplayName_Item_IronIngot', displayNameValue: 'Iron' });
+    expect(blueprint.mainGrid.recipe.ingots).toContainEqual({ name: 'Nickel', count: 20, displayNameId: 'DisplayName_Item_NickelIngot', displayNameValue: 'Nickel' });
+    expect(blueprint.mainGrid.recipe.ingots).toContainEqual({ name: 'Silicon', count: 0.4, displayNameId: 'DisplayName_Item_SiliconWafer', displayNameValue: 'Silicon' });
 
     // sub grid
     expect(blueprint.subGrids[0].recipe).toBeInstanceOf(Object);
     // blocks
     expect(blueprint.subGrids[0].recipe.blocks).toBeInstanceOf(Array);
     expect(blueprint.subGrids[0].recipe.blocks.length).toBe(2);
-    expect(blueprint.subGrids[0].recipe.blocks).toContainEqual({ name: 'LargeBlockArmorBlock', count: 1 });
-    expect(blueprint.subGrids[0].recipe.blocks).toContainEqual({ name: 'LargeRotor', count: 1 });
+    expect(blueprint.subGrids[0].recipe.blocks).toContainEqual({ name: 'LargeBlockArmorBlock', count: 1, size: 'Large', displayNameId: 'DisplayName_Block_LightArmorBlock', displayNameValue: 'LargeBlockArmorBlock' });
+    expect(blueprint.subGrids[0].recipe.blocks).toContainEqual({ name: 'LargeRotor', count: 1, size: 'Large', displayNameId: 'DisplayName_Block_RotorPart', displayNameValue: 'LargeRotor' });
     // components
     expect(blueprint.subGrids[0].recipe.components).toBeInstanceOf(Array);
     expect(blueprint.subGrids[0].recipe.components.length).toBe(2);
-    expect(blueprint.subGrids[0].recipe.components).toContainEqual({ name: 'SteelPlate', count: 55 });
-    expect(blueprint.subGrids[0].recipe.components).toContainEqual({ name: 'LargeTube', count: 6 });
+    expect(blueprint.subGrids[0].recipe.components).toContainEqual({ name: 'SteelPlate', count: 55, displayNameId: 'DisplayName_Item_SteelPlate', displayNameValue: 'SteelPlate' });
+    expect(blueprint.subGrids[0].recipe.components).toContainEqual({ name: 'LargeTube', count: 6, displayNameId: 'DisplayName_Item_LargeSteelTube', displayNameValue: 'LargeTube' });
     // ingots
     expect(blueprint.subGrids[0].recipe.ingots).toBeInstanceOf(Array);
     expect(blueprint.subGrids[0].recipe.ingots.length).toBe(1);
-    expect(blueprint.subGrids[0].recipe.ingots).toContainEqual({ name: 'Iron', count: 1335 });
+    expect(blueprint.subGrids[0].recipe.ingots).toContainEqual({ name: 'Iron', count: 1335, displayNameId: 'DisplayName_Item_IronIngot', displayNameValue: 'Iron' });
   });
 
   it('should compute global recipe', () => {
@@ -124,23 +124,23 @@ describe('blueprintService/computeBlueprint', () => {
     // blocks
     expect(blueprint.recipe.blocks).toBeInstanceOf(Array);
     expect(blueprint.recipe.blocks.length).toBe(3);
-    expect(blueprint.recipe.blocks).toContainEqual({ name: 'LargeBlockArmorBlock', count: 2 });
-    expect(blueprint.recipe.blocks).toContainEqual({ name: 'LargeStator', count: 1 });
-    expect(blueprint.recipe.blocks).toContainEqual({ name: 'LargeRotor', count: 1 });
+    expect(blueprint.recipe.blocks).toContainEqual({ name: 'LargeBlockArmorBlock', count: 2, size: 'Large', displayNameId: 'DisplayName_Block_LightArmorBlock', displayNameValue: 'LargeBlockArmorBlock' });
+    expect(blueprint.recipe.blocks).toContainEqual({ name: 'LargeStator', count: 1, size: 'Large', displayNameId: 'DisplayName_Block_Rotor', displayNameValue: 'LargeStator' });
+    expect(blueprint.recipe.blocks).toContainEqual({ name: 'LargeRotor', count: 1, size: 'Large', displayNameId: 'DisplayName_Block_RotorPart', displayNameValue: 'LargeRotor' });
     // components
     expect(blueprint.recipe.components).toBeInstanceOf(Array);
     expect(blueprint.recipe.components.length).toBe(5);
-    expect(blueprint.recipe.components).toContainEqual({ name: 'SteelPlate', count: 95 });
-    expect(blueprint.recipe.components).toContainEqual({ name: 'Construction', count: 10 });
-    expect(blueprint.recipe.components).toContainEqual({ name: 'LargeTube', count: 10 });
-    expect(blueprint.recipe.components).toContainEqual({ name: 'Motor', count: 4 });
-    expect(blueprint.recipe.components).toContainEqual({ name: 'Computer', count: 2 });
+    expect(blueprint.recipe.components).toContainEqual({ name: 'SteelPlate', count: 95, displayNameId: 'DisplayName_Item_SteelPlate', displayNameValue: 'SteelPlate' });
+    expect(blueprint.recipe.components).toContainEqual({ name: 'Construction', count: 10, displayNameId: 'DisplayName_Item_ConstructionComponent', displayNameValue: 'Construction' });
+    expect(blueprint.recipe.components).toContainEqual({ name: 'LargeTube', count: 10, displayNameId: 'DisplayName_Item_LargeSteelTube', displayNameValue: 'LargeTube' });
+    expect(blueprint.recipe.components).toContainEqual({ name: 'Motor', count: 4, displayNameId: 'DisplayName_Item_Motor', displayNameValue: 'Motor' });
+    expect(blueprint.recipe.components).toContainEqual({ name: 'Computer', count: 2, displayNameId: 'DisplayName_Item_Computer', displayNameValue: 'Computer' });
     // ingots
     expect(blueprint.recipe.ingots).toBeInstanceOf(Array);
     expect(blueprint.recipe.ingots.length).toBe(3);
-    expect(blueprint.recipe.ingots).toContainEqual({ name: 'Iron', count: 2456 });
-    expect(blueprint.recipe.ingots).toContainEqual({ name: 'Nickel', count: 20 });
-    expect(blueprint.recipe.ingots).toContainEqual({ name: 'Silicon', count: 0.4 });
+    expect(blueprint.recipe.ingots).toContainEqual({ name: 'Iron', count: 2456, displayNameId: 'DisplayName_Item_IronIngot', displayNameValue: 'Iron' });
+    expect(blueprint.recipe.ingots).toContainEqual({ name: 'Nickel', count: 20, displayNameId: 'DisplayName_Item_NickelIngot', displayNameValue: 'Nickel' });
+    expect(blueprint.recipe.ingots).toContainEqual({ name: 'Silicon', count: 0.4, displayNameId: 'DisplayName_Item_SiliconWafer', displayNameValue: 'Silicon' });
   });
 
   it('should compute grids mass', () => {
