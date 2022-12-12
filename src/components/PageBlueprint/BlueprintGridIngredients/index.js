@@ -4,51 +4,53 @@ import {
   CardContent,
   Table,
   TableBody,
-  TableCell,
   TableHead,
-  TableRow,
-  TableSortLabel,
 } from '@mui/material';
 
 import { propTypeIngredient } from '../../../prop_types';
-import roundToDec from '../../../utils/roundToDec';
 import CustomCard from '../../CustomCard';
 import CustomCardHeader from '../../CustomCardHeader';
 import INGREDIENT_COLUMN from '../../../constants/ingredient_column';
-import SORT from '../../../constants/sort';
+import SORT_DIRECTION from '../../../constants/sort_direction';
 import COMPARE_FUNCTION from '../../../constants/compare_function';
+import IngredientsTableHeadCells from '../IngredientsTableHeadCells';
+import IngredientsTableBodyCells from '../IngredientsTableBodyCells';
 
 const BlueprintGridIngredients = ({ title, ingredients, action }) => {
-  const [orderBy, setOrderBy] = useState(INGREDIENT_COLUMN.COUNT.id);
-  const [order, setOrder] = useState(SORT.DESC);
+  const [sortBy, setSortBy] = useState(INGREDIENT_COLUMN.COUNT.id);
+  const [sortDirection, setSortDirection] = useState(SORT_DIRECTION.DESC);
   const [sortedIngredients, setSortedIngredients] = useState(ingredients);
 
   const onSortClickHandler = (columnClickedId) => {
-    if (orderBy === columnClickedId) {
-      setOrder((previousOrder) => (previousOrder === SORT.ASC ? SORT.DESC : SORT.ASC));
+    if (sortBy === columnClickedId) {
+      setSortDirection(
+        (previousOrder) => (
+          previousOrder === SORT_DIRECTION.ASC ? SORT_DIRECTION.DESC : SORT_DIRECTION.ASC
+        ),
+      );
     } else {
-      setOrderBy(columnClickedId);
-      setOrder(SORT.ASC);
+      setSortBy(columnClickedId);
+      setSortDirection(SORT_DIRECTION.ASC);
     }
   };
 
   useEffect(() => {
     const newSortedIngredients = [...ingredients]
       .sort((ingredientA, ingredientB) => {
-        const ingredientAValue = ingredientA[orderBy];
-        const ingredientBValue = ingredientB[orderBy];
+        const ingredientAValue = ingredientA[sortBy];
+        const ingredientBValue = ingredientB[sortBy];
 
         const typeToSort = typeof ingredientAValue;
         const sortFunction = COMPARE_FUNCTION[typeToSort];
 
-        if (order === SORT.ASC) {
+        if (sortDirection === SORT_DIRECTION.ASC) {
           return sortFunction(ingredientAValue, ingredientBValue);
         }
         return sortFunction(ingredientBValue, ingredientAValue);
       });
 
     setSortedIngredients(newSortedIngredients);
-  }, [orderBy, order, ingredients]);
+  }, [sortBy, sortDirection, ingredients]);
 
   return (
     <CustomCard>
@@ -56,27 +58,14 @@ const BlueprintGridIngredients = ({ title, ingredients, action }) => {
       <CardContent sx={{ overflowX: 'auto' }}>
         <Table padding="normal" size="small">
           <TableHead>
-            <TableRow>
-              {Object.values(INGREDIENT_COLUMN).map((column) => (
-                <TableCell key={column.id} sortDirection={orderBy === column.id ? order : null}>
-                  <TableSortLabel
-                    active={orderBy === column.id}
-                    direction={order || SORT.ASC}
-                    onClick={() => onSortClickHandler(column.id)}
-                  >
-                    {column.label}
-                  </TableSortLabel>
-                </TableCell>
-              ))}
-            </TableRow>
+            <IngredientsTableHeadCells
+              sortDirection={sortDirection}
+              sortBy={sortBy}
+              onSortClick={onSortClickHandler}
+            />
           </TableHead>
           <TableBody>
-            {sortedIngredients.map((block) => (
-              <TableRow key={block.name}>
-                <TableCell>{block.displayNameValue}</TableCell>
-                <TableCell>{roundToDec(block.count, 1)}</TableCell>
-              </TableRow>
-            ))}
+            <IngredientsTableBodyCells ingredients={sortedIngredients} />
           </TableBody>
         </Table>
       </CardContent>
