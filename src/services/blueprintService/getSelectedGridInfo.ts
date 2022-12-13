@@ -1,4 +1,5 @@
 import GRID_OPTION from '../../constants/grid_option';
+import { Blueprint, Grid } from './types';
 
 /**
  * From a blueprint and a selected grid id, returns the selected grid info.
@@ -7,7 +8,10 @@ import GRID_OPTION from '../../constants/grid_option';
  * @param {string|number} selectedGrid
  * @return {Grid|Blueprint}
  */
-const getSelectedGridInfo = (blueprint, selectedGrid) => {
+const getSelectedGridInfo = (
+  blueprint: Blueprint,
+  selectedGrid: string | number,
+): Grid | Blueprint => {
   if (typeof selectedGrid === 'number') {
     return blueprint.subGrids[selectedGrid];
   }

@@ -4,7 +4,7 @@
  * @param {string} chars
  * @return {string}
  */
-const trimWithChar = (str, chars) => {
+const trimWithChar = (str: string, chars: string) => {
   if (!chars) {
     return str;
   }

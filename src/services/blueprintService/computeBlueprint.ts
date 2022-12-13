@@ -1,74 +1,24 @@
-import gameBlocks from '../../game_data/blocks.json';
-import gameComponents from '../../game_data/components.json';
-import gameIngots from '../../game_data/ingots.json';
+import { gameBlocks } from '../../game_data/gameBlocks';
+import { gameComponents } from '../../game_data/gameComponents';
+import { gameIngots } from '../../game_data/gameIngots';
 import xmlToJsObject from '../../utils/xmlToJsObject';
+import { Grid, Ingredient, Recipe } from './types';
 
-/**
- * Block
- * @typedef {{
- *   name: string,
- *   count: number,
- *   size: string,
- *   displayNameId: string,
- *   displayNameValue: string
- * }} Block
- */
-
-/**
- * Component
- * @typedef {{
- *   name: string,
- *   count: number,
- *   displayNameId: string,
- *   displayNameValue: string
- * }} Component
- */
-
-/**
- * Ingot
- * @typedef {{name: string, count: number, displayNameId: string, displayNameValue: string}} Ingot
- */
-
-/**
- * Recipe
- * @typedef {{blocks: Block[], components: Component[], ingots: Ingot[]}} Recipe
- */
-
-/**
- * Grid
- * @typedef {{
- *   name: string,
- *   size: string,
- *   recipe: Recipe,
- *   blockCount: number,
- *   mass: number,
- *   pcuCost: number,
- * }} Grid
- */
-
-/**
- * Blueprint
- * @typedef {{
- *   owner: {steamId: string, name: string},
- *   subGrids: Grid[],
- *   mainGrid: Grid,
- *   workshopId: string,
- *   dlc: string,
- *   blockCount: number,
- *   mass: number,
- *   pcuCost: number,
- * }} Blueprint
- */
+interface XmlObject {
+  [key: string]: any;
+}
 
 /**
  * Compute blocks for a recipe
  * @param {string[]} blocks
  * @param {string} size
- * @return {Block[]}
+ * @return {Ingredient[]}
  */
-const computeBlocks = (blocks, size) => {
+const computeBlocks = (blocks: string[], size: string): Ingredient[] => {
   const blocksCount = blocks.reduce(
-    (acc, block) => (acc[block] ? { ...acc, [block]: acc[block] + 1 } : { ...acc, [block]: 1 }),
+    (acc: { [key: string]: number }, block) => (
+      acc[block] ? { ...acc, [block]: acc[block] + 1 } : { ...acc, [block]: 1 }
+    ),
     {},
   );
   return Object.entries(blocksCount).map(([name, count]) => ({
@@ -82,11 +32,11 @@ const computeBlocks = (blocks, size) => {
 
 /**
  * Compute components for a recipe
- * @param {Block[]} blocks
- * @return {Component[]}
+ * @param {Ingredient[]} blocks
+ * @return {Ingredient[]}
  */
-const computeComponents = (blocks) => {
-  const components = {};
+const computeComponents = (blocks: Ingredient[]) => {
+  const components: { [key: string]: number } = {};
   blocks.forEach(
     (block) => {
       gameBlocks[block.name].recipe.forEach(({ count, subtype }) => {
@@ -105,11 +55,11 @@ const computeComponents = (blocks) => {
 
 /**
  * Compute ingots for a recipe
- * @param {Component[]} components
- * @return {Ingot[]}
+ * @param {Ingredient[]} components
+ * @return {Ingredient[]}
  */
-const computeIngots = (components) => {
-  const ingots = {};
+const computeIngots = (components: Ingredient[]) => {
+  const ingots: { [key: string]: number } = {};
   components.forEach(
     (component) => {
       gameComponents[component.name].recipe.forEach(({ count, subtype }) => {
@@ -128,10 +78,10 @@ const computeIngots = (components) => {
 
 /**
  * Compute recipe for a list of blocks
- * @param {Block[]} blocks
+ * @param {Ingredient[]} blocks
  * @return {Recipe}
  */
-const computeRecipe = (blocks) => {
+const computeRecipe = (blocks: Ingredient[]) => {
   const components = computeComponents(blocks);
   const ingots = computeIngots(components);
   return {
@@ -146,8 +96,8 @@ const computeRecipe = (blocks) => {
  * @param {Recipe[]} recipes
  * @return {Recipe}
  */
-const combineRecipes = (recipes) => {
-  const blocks = [];
+const combineRecipes = (recipes: Recipe[]) => {
+  const blocks: Ingredient[] = [];
   recipes.forEach((recipe) => {
     recipe.blocks.forEach((ingredient) => {
       const index = blocks.findIndex((item) => item.name === ingredient.name);
@@ -167,7 +117,7 @@ const combineRecipes = (recipes) => {
  * @param {Grid[]} subGrids
  * @return {Recipe}
  */
-const computeGlobalRecipe = (mainGrid, subGrids) => {
+const computeGlobalRecipe = (mainGrid: Grid, subGrids: Grid[]) => {
   const recipes = [mainGrid, ...subGrids].map((grid) => grid.recipe);
   return combineRecipes(recipes);
 };
@@ -177,7 +127,7 @@ const computeGlobalRecipe = (mainGrid, subGrids) => {
  * @param {Recipe} recipe
  * @return {number}
  */
-const computeRecipeBlockCount = (recipe) => (
+const computeRecipeBlockCount = (recipe: Recipe) => (
   recipe.blocks.reduce((sum, block) => sum + block.count, 0)
 );
 
@@ -186,10 +136,12 @@ const computeRecipeBlockCount = (recipe) => (
  * @param {Recipe} recipe
  * @return {number}
  */
-const computeRecipeMass = (recipe) => (
+const computeRecipeMass = (recipe: Recipe) => (
   recipe.components.reduce(
     (sum, component) => (
-      sum + gameComponents[component.name].mass * component.count
+      sum
+      + (Number(gameComponents[component.name].mass) || 0)
+      * component.count
     ),
     0,
   ));
@@ -199,30 +151,30 @@ const computeRecipeMass = (recipe) => (
  * @param {Recipe} recipe
  * @return {number}
  */
-const computeRecipePcu = (recipe) => (
+const computeRecipePcu = (recipe: Recipe) => (
   recipe.blocks.reduce(
-    (sum, block) => sum + gameBlocks[block.name].pcu * block.count,
+    (sum, block) => sum + Number(gameBlocks[block.name].pcu) * block.count,
     0,
   )
 );
 
 /**
  * Get all block names from a grid
- * @param {Object} xmlGrid
+ * @param {XmlObject} xmlGrid
  * @return {string[]}
  */
-const getXmlGridBlocks = (xmlGrid) => {
+const getXmlGridBlocks = (xmlGrid: XmlObject) => {
   let cubeBlocks = xmlGrid.CubeBlocks.MyObjectBuilder_CubeBlock;
   if (!Array.isArray(cubeBlocks)) cubeBlocks = [cubeBlocks];
-  return cubeBlocks.map((block) => (block.SubtypeName));
+  return cubeBlocks.map((block: XmlObject) => (block.SubtypeName));
 };
 
 /**
  * Compute grid
- * @param {Object} xmlGrid
+ * @param {XmlObject} xmlGrid
  * @return {Grid}
  */
-const computeGrid = (xmlGrid) => {
+const computeGrid = (xmlGrid: XmlObject) => {
   const xmlBlocks = getXmlGridBlocks(xmlGrid);
   const size = xmlGrid.GridSizeEnum;
   const blocks = computeBlocks(xmlBlocks, size);
@@ -238,31 +190,31 @@ const computeGrid = (xmlGrid) => {
 /**
  * Compute main grid
  * @param {string} mainGridName
- * @param {object} xmlGrids
+ * @param {XmlObject} xmlGrids
  * @return {Grid}
  */
-const computeMainGrid = (mainGridName, xmlGrids) => {
-  const xmlMainGrid = xmlGrids.find((grid) => grid.DisplayName === mainGridName);
+const computeMainGrid = (mainGridName: string, xmlGrids: XmlObject) => {
+  const xmlMainGrid = xmlGrids.find((grid: XmlObject) => grid.DisplayName === mainGridName);
   return computeGrid(xmlMainGrid);
 };
 
 /**
  * Compute sub grids
  * @param {string} mainGridName
- * @param {object} xmlGrids
+ * @param {XmlObject} xmlGrids
  * @return {Grid[]}
  */
-const computeSubGrids = (mainGridName, xmlGrids) => {
-  const xmlSubGrids = xmlGrids.filter((grid) => grid.DisplayName !== mainGridName);
+const computeSubGrids = (mainGridName: string, xmlGrids: XmlObject) => {
+  const xmlSubGrids = xmlGrids.filter((grid: XmlObject) => grid.DisplayName !== mainGridName);
   return xmlSubGrids.map(computeGrid);
 };
 
 /**
  * Gather static information from xml object
- * @param {string} xmlObject
+ * @param {XmlObject} xmlObject
  * @return {{owner: {steamId: string, name: string}, name: string, workshopId: string, dlc: string}}
  */
-const getStaticInfo = (xmlObject) => ({
+const getStaticInfo = (xmlObject: XmlObject) => ({
   owner: {
     name: xmlObject.Definitions.ShipBlueprints.ShipBlueprint.DisplayName,
     steamId: xmlObject.Definitions.ShipBlueprints.ShipBlueprint.OwnerSteamId,
@@ -276,10 +228,10 @@ const getStaticInfo = (xmlObject) => ({
 
 /**
  * Get all grids from xml object and wrap them with an array
- * @param {Object} xmlObject
- * @return {Object[]}
+ * @param {XmlObject} xmlObject
+ * @return {XmlObject[]}
  */
-const getXmlGrids = (xmlObject) => {
+const getXmlGrids = (xmlObject: XmlObject) => {
   const xmlGrids = xmlObject.Definitions.ShipBlueprints.ShipBlueprint.CubeGrids.CubeGrid;
   return Array.isArray(xmlGrids) ? xmlGrids : [xmlGrids];
 };
@@ -289,7 +241,7 @@ const getXmlGrids = (xmlObject) => {
  * @param {string} xmlString
  * @return {Blueprint}
  */
-const computeBlueprint = (xmlString) => {
+const computeBlueprint = (xmlString: string) => {
   const xmlObject = xmlToJsObject(xmlString);
   const xmlGrids = getXmlGrids(xmlObject);
 

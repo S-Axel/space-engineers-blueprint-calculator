@@ -1,5 +1,7 @@
+import { Blueprint } from '../../services/blueprintService/types';
+
 export default {
-  get: () => ({
+  get: (): Blueprint => ({
     owner:
       {
         name: 'FRChewbie',

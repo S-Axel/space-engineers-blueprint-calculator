@@ -6,7 +6,6 @@ describe('trimWithChar', () => {
   });
 
   it('given no char, should return same string', () => {
-    expect(trimWithChar('abc')).toBe('abc');
     expect(trimWithChar('abc', '')).toBe('abc');
   });
 

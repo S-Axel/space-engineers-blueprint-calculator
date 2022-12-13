@@ -4,7 +4,7 @@
  * @param {number} decimals - The number of decimal places to round to.
  * @returns {string} The rounded number as a string.
  */
-const roundToDec = (num, decimals) => {
+const roundToDec = (num: number, decimals: number) => {
   const rounded = num.toFixed(decimals);
 
   return rounded

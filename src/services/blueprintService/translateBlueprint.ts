@@ -1,12 +1,13 @@
 import langEn from '../../game_data/lang/en.json';
+import { Blueprint, Recipe, TranslationDictionary } from './types';
 
 /**
  * translate a recipe with the given translation dictionary
  * @param {Recipe} recipe
- * @param {Object} translations
+ * @param {TranslationDictionary} translations
  * @return {void}
  */
-const translateRecipe = (recipe, translations) => {
+const translateRecipe = (recipe: Recipe, translations: TranslationDictionary): void => {
   recipe.blocks.forEach((block) => {
     // eslint-disable-next-line no-param-reassign
     block.displayNameValue = translations[block.displayNameId] || block.name;
@@ -26,7 +27,7 @@ const translateRecipe = (recipe, translations) => {
  * @param {Blueprint} blueprint
  * @return {Blueprint}
  */
-const translateBlueprint = (blueprint) => {
+const translateBlueprint = (blueprint: Blueprint): Blueprint => {
   const translations = langEn;
   translateRecipe(blueprint.recipe, translations);
   translateRecipe(blueprint.mainGrid.recipe, translations);
