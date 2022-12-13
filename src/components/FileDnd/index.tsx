@@ -4,16 +4,34 @@ import { FileUploader } from 'react-drag-drop-files';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-const fileTypes = ['sbc'];
+const acceptedFileTypes = ['sbc'];
 
-const FileDnd = ({ updateFile }) => {
+const FileDndPropTypes = {
+  updateFile: PropTypes.func.isRequired,
+};
+
+interface FileDndProps {
+  updateFile: (file: File) => void;
+}
+
+/**
+ * File drag and drop component with internal error handling and display
+ * @param {(file: File) => void} updateFile
+ * @return {JSX.Element}
+ * @constructor
+ */
+const FileDnd = ({ updateFile }: FileDndProps) => {
   const [error, setError] = useState('');
 
-  const onDraggingStateChangeHandler = (dragging) => {
+  const onDraggingStateChangeHandler = (dragging: boolean) => {
     if (dragging) setError('');
   };
 
-  const onChangeHandler = (file) => {
+  const onChangeHandler = (file: File | File[]) => {
+    if (Array.isArray(file)) {
+      setError('Please drop only one file');
+      return;
+    }
     updateFile(file);
     setError('');
   };
@@ -23,7 +41,7 @@ const FileDnd = ({ updateFile }) => {
       {error && <Alert severity="error">{error}</Alert>}
       <FileUploader
         handleChange={onChangeHandler}
-        types={fileTypes}
+        types={acceptedFileTypes}
         multiple={false}
         hoverTitle=" "
         onTypeError={setError}
@@ -57,8 +75,6 @@ const FileDnd = ({ updateFile }) => {
   );
 };
 
-FileDnd.propTypes = {
-  updateFile: PropTypes.func.isRequired,
-};
+FileDnd.propTypes = FileDndPropTypes;
 
 export default FileDnd;
