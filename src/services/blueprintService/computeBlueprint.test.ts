@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import computeBlueprint from './computeBlueprint';
 import miningShipBp from '../../mocks/xmlBlueprints/miningShipBp';
 import grid7782 from '../../mocks/xmlBlueprints/grid7782';
