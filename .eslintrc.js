@@ -21,5 +21,10 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    '@typescript-eslint/member-delimiter-style': ['error', {
+      multiline: { delimiter: 'semi', requireLast: true },
+      singleline: { delimiter: 'semi', requireLast: false },
+      multilineDetection: 'brackets',
+    }],
   },
 };
