@@ -1,19 +1,13 @@
-import { Card } from '@mui/material';
-import PropTypes from 'prop-types';
+import { Card, CardProps } from '@mui/material';
 
-const CustomCard = ({ children, sx, ...props }) => (
-  <Card variant="outlined" sx={{ ...sx }} {...props}>
-    {children}
-  </Card>
+/**
+ * Custom Card component
+ * @param {CardProps} props
+ * @return {JSX.Element}
+ * @constructor
+ */
+const CustomCard = ({ ...cardProps }: CardProps) => (
+  <Card variant="outlined" {...cardProps} />
 );
-
-CustomCard.propTypes = {
-  children: PropTypes.node.isRequired,
-  sx: PropTypes.object,
-};
-
-CustomCard.defaultProps = {
-  sx: {},
-};
 
 export default CustomCard;

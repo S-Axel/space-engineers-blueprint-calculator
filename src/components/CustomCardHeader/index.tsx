@@ -1,22 +1,18 @@
-import { CardHeader } from '@mui/material';
-import PropTypes from 'prop-types';
+import { CardHeader, CardHeaderProps } from '@mui/material';
 
-const CustomCardHeader = ({ sx, titleTypographyProps, ...props }) => (
+/**
+ * Custom CardHeader component
+ * Be careful, the component inherits MUI problems:
+ * types are wrong for CardHeader.titleTypographyProps.component
+ * @param {CardHeaderProps} props
+ * @return {JSX.Element}
+ * @constructor
+ */
+const CustomCardHeader = ({ ...cardHeaderProps }: CardHeaderProps) => (
   <CardHeader
-    sx={{ ...sx }}
-    titleTypographyProps={{ ...titleTypographyProps, variant: 'h6' }}
-    {...props}
+    titleTypographyProps={{ variant: 'h6', ...cardHeaderProps.titleTypographyProps }}
+    {...cardHeaderProps}
   />
 );
-
-CustomCardHeader.propTypes = {
-  sx: PropTypes.object,
-  titleTypographyProps: PropTypes.object,
-};
-
-CustomCardHeader.defaultProps = {
-  sx: {},
-  titleTypographyProps: {},
-};
 
 export default CustomCardHeader;
