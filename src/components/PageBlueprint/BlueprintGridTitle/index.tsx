@@ -1,20 +1,31 @@
 import { CardContent, Typography } from '@mui/material';
-import PropTypes from 'prop-types';
 
-import GRID_OPTION from '../../../constants/grid_option';
-import { propTypeBlueprint, propTypeGrid } from '../../../prop_types';
+import GridDisplayOption from '../../../constants/GridDisplayOption';
 import CustomCard from '../../CustomCard';
 import CustomCardHeader from '../../CustomCardHeader';
+import { Blueprint, Grid } from '../../../services/blueprintService/types';
 
-const gridOptionStrings = {
-  [GRID_OPTION.ALL]: 'All grids',
-  [GRID_OPTION.MAIN]: 'Main grid',
+const GridDisplayOptionDictionary: Record<GridDisplayOption, string> = {
+  [GridDisplayOption.All]: 'All grids',
+  [GridDisplayOption.Main]: 'Main grid',
 };
 
-const BlueprintGridTitle = ({ selectedGrid, selectedGridInfo }) => {
+interface BlueprintGridTitleProps {
+  selectedGrid: GridDisplayOption | number;
+  selectedGridInfo: Grid | Blueprint;
+}
+
+/**
+ * Display the title of the selected grid and basic information about it.
+ * @param {GridDisplayOption | number} selectedGrid
+ * @param {Grid | Blueprint} selectedGridInfo
+ * @return {JSX.Element}
+ * @constructor
+ */
+const BlueprintGridTitle = ({ selectedGrid, selectedGridInfo }: BlueprintGridTitleProps) => {
   const title = typeof selectedGrid === 'number'
     ? `Sub grid: ${selectedGridInfo.name}`
-    : gridOptionStrings[selectedGrid];
+    : GridDisplayOptionDictionary[selectedGrid];
   return (
     <CustomCard>
       <CustomCardHeader title={title} />
@@ -22,15 +33,10 @@ const BlueprintGridTitle = ({ selectedGrid, selectedGridInfo }) => {
         <Typography>{`Number of blocks: ${selectedGridInfo.blockCount}`}</Typography>
         <Typography>{`Mass: ${selectedGridInfo.mass} kg`}</Typography>
         <Typography>{`PCU: ${selectedGridInfo.pcuCost}`}</Typography>
-        {selectedGrid !== GRID_OPTION.ALL && <Typography>{`Grid size: ${selectedGridInfo.size}`}</Typography>}
+        {'size' in selectedGridInfo && <Typography>{`Grid size: ${selectedGridInfo.size}`}</Typography>}
       </CardContent>
     </CustomCard>
   );
-};
-
-BlueprintGridTitle.propTypes = {
-  selectedGrid: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  selectedGridInfo: PropTypes.oneOfType([propTypeBlueprint, propTypeGrid]).isRequired,
 };
 
 export default BlueprintGridTitle;

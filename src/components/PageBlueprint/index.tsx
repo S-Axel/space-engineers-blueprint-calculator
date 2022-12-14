@@ -1,31 +1,42 @@
 import { useEffect, useState } from 'react';
-import Grid from '@mui/material/Unstable_Grid2';
+import MuiGrid from '@mui/material/Unstable_Grid2';
 import { useTheme } from '@mui/material';
-import PropTypes from 'prop-types';
 
 import BlueprintTitle from './BlueprintTitle';
 import BlueprintGridList from './BlueprintGridList';
 import BlueprintGridTitle from './BlueprintGridTitle';
-import { propTypeBlueprint } from '../../prop_types';
-import GRID_OPTION from '../../constants/grid_option';
+import GridDisplayOption from '../../constants/GridDisplayOption';
 import { getSelectedGridInfo } from '../../services/blueprintService';
 import BlueprintGridIngots from './BlueprintGridIngots';
 import BlueprintGridIngredients from './BlueprintGridIngredients';
 import ImportBlueprintModal from './ImportBlueprintModal';
+import { Blueprint, Grid } from '../../services/blueprintService/types';
 
-const PageBlueprint = ({ blueprint, updateFile }) => {
-  const [state, setState] = useState({
-    // possible values for selectedGrids: 'all', 'main', any subgrid index as a number
-    selectedGrid: GRID_OPTION.ALL,
-    selectedGridInfo: getSelectedGridInfo(blueprint, GRID_OPTION.ALL),
+interface PageBlueprintProps {
+  blueprint: Blueprint;
+  updateFile: (file: File) => void;
+}
+
+interface State {
+  selectedGrid: GridDisplayOption | number;
+  selectedGridInfo: Grid | Blueprint;
+  listOpen: boolean;
+}
+
+const PageBlueprint = ({ blueprint, updateFile }: PageBlueprintProps) => {
+  const [state, setState] = useState<State>({
+    // possible values for selectedGrids:
+    // 'all', 'main' from GridDisplayOption and any subgrid index as a number
+    selectedGrid: GridDisplayOption.All,
+    selectedGridInfo: getSelectedGridInfo(blueprint, GridDisplayOption.All),
     listOpen: false,
   });
 
   useEffect(() => {
     setState((prevState) => ({
       ...prevState,
-      selectedGrid: GRID_OPTION.ALL,
-      selectedGridInfo: getSelectedGridInfo(blueprint, GRID_OPTION.ALL),
+      selectedGrid: GridDisplayOption.All,
+      selectedGridInfo: getSelectedGridInfo(blueprint, GridDisplayOption.All),
     }));
   }, [blueprint]);
 
@@ -37,7 +48,7 @@ const PageBlueprint = ({ blueprint, updateFile }) => {
     transitionTimingFunction: theme.transitions.easing.easeInOut,
   };
 
-  const onGridChangeHandler = (newGrid) => {
+  const onGridChangeHandler = (newGrid: GridDisplayOption | number) => {
     setState((prevState) => ({
       ...prevState,
       selectedGrid: newGrid,
@@ -45,16 +56,16 @@ const PageBlueprint = ({ blueprint, updateFile }) => {
     }));
   };
 
-  const onGridListOpenChangeHandler = (isExpanded) => {
+  const onGridListOpenChangeHandler = (isExpanded: boolean) => {
     setState((prevState) => ({ ...prevState, listOpen: isExpanded }));
   };
 
   return (
     <>
-      <Grid xs={3} sm={7} md={11}>
+      <MuiGrid xs={3} sm={7} md={11}>
         <BlueprintTitle blueprint={blueprint} />
-      </Grid>
-      <Grid
+      </MuiGrid>
+      <MuiGrid
         xs={1}
         sx={{
           position: 'sticky',
@@ -67,24 +78,24 @@ const PageBlueprint = ({ blueprint, updateFile }) => {
           sx={{ position: 'relative', right: { lg: '-96px' } }}
           updateFile={updateFile}
         />
-      </Grid>
-      <Grid container xs={12} sx={{ position: 'relative' }}>
-        <Grid xs={12} md={3} sx={{ position: { md: state.listOpen ? 'absolute' : 'static' } }}>
+      </MuiGrid>
+      <MuiGrid container xs={12} sx={{ position: 'relative' }}>
+        <MuiGrid xs={12} md={3} sx={{ position: { md: state.listOpen ? 'absolute' : 'static' } }}>
           <BlueprintGridList
             blueprint={blueprint}
             selectedGrid={state.selectedGrid}
             onGridChange={onGridChangeHandler}
             onOpenChange={onGridListOpenChangeHandler}
           />
-        </Grid>
-        <Grid xs={12} mdOffset={state.listOpen ? 3 : 0} md={9}>
+        </MuiGrid>
+        <MuiGrid xs={12} mdOffset={state.listOpen ? 3 : 0} md={9}>
           <BlueprintGridTitle
             selectedGrid={state.selectedGrid}
             selectedGridInfo={state.selectedGridInfo}
           />
-        </Grid>
-      </Grid>
-      <Grid
+        </MuiGrid>
+      </MuiGrid>
+      <MuiGrid
         xs={12}
         md={state.listOpen ? 9 : 12}
         mdOffset={state.listOpen ? 3 : 0}
@@ -94,8 +105,8 @@ const PageBlueprint = ({ blueprint, updateFile }) => {
           title="Blocks"
           ingredients={state.selectedGridInfo.recipe.blocks}
         />
-      </Grid>
-      <Grid
+      </MuiGrid>
+      <MuiGrid
         xs={12}
         mdOffset={state.listOpen ? 3 : 0}
         md={state.listOpen ? 9 : 6}
@@ -105,22 +116,17 @@ const PageBlueprint = ({ blueprint, updateFile }) => {
           title="Components"
           ingredients={state.selectedGridInfo.recipe.components}
         />
-      </Grid>
-      <Grid
+      </MuiGrid>
+      <MuiGrid
         xs={12}
         mdOffset={state.listOpen ? 3 : 0}
         md={state.listOpen ? 9 : 6}
         sx={transition}
       >
         <BlueprintGridIngots ingots={state.selectedGridInfo.recipe.ingots} />
-      </Grid>
+      </MuiGrid>
     </>
   );
-};
-
-PageBlueprint.propTypes = {
-  blueprint: propTypeBlueprint.isRequired,
-  updateFile: PropTypes.func.isRequired,
 };
 
 export default PageBlueprint;

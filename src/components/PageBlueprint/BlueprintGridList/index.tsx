@@ -5,15 +5,35 @@ import {
   useTheme,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import PropTypes from 'prop-types';
 
-import { propTypeBlueprint } from '../../../prop_types';
-import GRID_OPTION from '../../../constants/grid_option';
+import GridDisplayOption from '../../../constants/GridDisplayOption';
+import { Blueprint } from '../../../services/blueprintService/types';
 
-const BlueprintGridList = ({ blueprint, selectedGrid, onGridChange, onOpenChange }) => {
+interface BlueprintGridListProps {
+  blueprint: Blueprint;
+  selectedGrid: GridDisplayOption | number;
+  onGridChange: (grid: GridDisplayOption | number) => void;
+  onOpenChange: (open: boolean) => void;
+}
+
+/**
+ * Display a list of grids in order to select one.
+ * @param {Blueprint} blueprint
+ * @param {GridDisplayOption | number} selectedGrid
+ * @param {(grid: (GridDisplayOption | number)) => void} onGridChange
+ * @param {(open: boolean) => void} onOpenChange
+ * @return {JSX.Element}
+ * @constructor
+ */
+const BlueprintGridList = ({
+  blueprint,
+  selectedGrid,
+  onGridChange,
+  onOpenChange,
+}: BlueprintGridListProps) => {
   const gridOptions = [
-    { name: 'All', id: GRID_OPTION.ALL },
-    { name: 'Main grid', id: GRID_OPTION.MAIN },
+    { name: 'All', id: GridDisplayOption.All },
+    { name: 'Main grid', id: GridDisplayOption.Main },
     ...blueprint.subGrids.map((grid, index) => ({ name: grid.name, id: index })),
   ];
   const theme = useTheme();
@@ -68,16 +88,6 @@ const BlueprintGridList = ({ blueprint, selectedGrid, onGridChange, onOpenChange
       </AccordionDetails>
     </Accordion>
   );
-};
-
-BlueprintGridList.propTypes = {
-  blueprint: propTypeBlueprint.isRequired,
-  selectedGrid: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]).isRequired,
-  onGridChange: PropTypes.func.isRequired,
-  onOpenChange: PropTypes.func.isRequired,
 };
 
 export default BlueprintGridList;
