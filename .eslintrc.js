@@ -5,6 +5,8 @@ module.exports = {
     'airbnb',
     'plugin:react/jsx-runtime',
     'airbnb-typescript',
+    'plugin:@typescript-eslint/strict',
+  ''
   ],
   parserOptions: {
     project: './tsconfig.json',
@@ -22,6 +24,9 @@ module.exports = {
       },
     ],
     'react/forbid-prop-types': 'off',
+    'react/require-default-props':['error', {
+      functions:'defaultArguments',
+    }],
     '@typescript-eslint/member-delimiter-style': ['error', {
       multiline: { delimiter: 'semi', requireLast: true },
       singleline: { delimiter: 'semi', requireLast: false },
