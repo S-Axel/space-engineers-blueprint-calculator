@@ -10,9 +10,7 @@ const CustomCardHeader = ({ sx, titleTypographyProps, ...props }) => (
 );
 
 CustomCardHeader.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   sx: PropTypes.object,
-  // eslint-disable-next-line react/forbid-prop-types
   titleTypographyProps: PropTypes.object,
 };
 

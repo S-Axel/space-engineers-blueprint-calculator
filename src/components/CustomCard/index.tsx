@@ -9,7 +9,6 @@ const CustomCard = ({ children, sx, ...props }) => (
 
 CustomCard.propTypes = {
   children: PropTypes.node.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
   sx: PropTypes.object,
 };
 

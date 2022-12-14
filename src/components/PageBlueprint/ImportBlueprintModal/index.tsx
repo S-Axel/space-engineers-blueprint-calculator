@@ -64,7 +64,6 @@ const ImportBlueprintModal = ({ updateFile, sx, ...props }) => {
 
 ImportBlueprintModal.propTypes = {
   updateFile: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
   sx: PropTypes.object,
 };
 

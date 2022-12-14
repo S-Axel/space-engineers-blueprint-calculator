@@ -21,6 +21,7 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    'react/forbid-prop-types': 'off',
     '@typescript-eslint/member-delimiter-style': ['error', {
       multiline: { delimiter: 'semi', requireLast: true },
       singleline: { delimiter: 'semi', requireLast: false },
