@@ -25,7 +25,7 @@ interface State {
 
 const PageBlueprint = ({ blueprint, updateFile }: PageBlueprintProps) => {
   const [state, setState] = useState<State>({
-    // possible values for selectedGrids:
+    // possible values for selectedGrid:
     // 'all', 'main' from GridDisplayOption and any subgrid index as a number
     selectedGrid: GridDisplayOption.All,
     selectedGridInfo: getSelectedGridInfo(blueprint, GridDisplayOption.All),

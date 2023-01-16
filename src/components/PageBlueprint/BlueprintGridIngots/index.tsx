@@ -1,19 +1,22 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 
-import { propTypeIngredient } from '../../../prop_types';
-import EFFICIENCY from '../../../constants/efficiency';
+import Efficiency from '../../../enums/Efficiency';
 import AssemblerEfficiencyMenu from '../AssemblerEfficiencyMenu';
 import BlueprintGridIngredients from '../BlueprintGridIngredients';
+import { Ingredient } from '../../../services/blueprintService/types';
 
-const BlueprintGridIngots = ({ ingots }) => {
-  const [assemblerEfficiency, setAssemblerEfficiency] = useState(EFFICIENCY.NORMAL);
+interface BlueprintGridIngotsProps {
+  ingots: Ingredient[];
+}
+
+const BlueprintGridIngots = ({ ingots }: BlueprintGridIngotsProps) => {
+  const [assemblerEfficiency, setAssemblerEfficiency] = useState(Efficiency.NORMAL);
   const computedIngots = ingots.map((ingot) => ({
     ...ingot,
     count: ingot.count / assemblerEfficiency,
   }));
 
-  const onEfficiencyChangeHandler = (newEfficiency) => {
+  const onEfficiencyChangeHandler = (newEfficiency: Efficiency) => {
     setAssemblerEfficiency(newEfficiency);
   };
 
@@ -29,10 +32,6 @@ const BlueprintGridIngots = ({ ingots }) => {
       )}
     />
   );
-};
-
-BlueprintGridIngots.propTypes = {
-  ingots: PropTypes.arrayOf(propTypeIngredient).isRequired,
 };
 
 export default BlueprintGridIngots;

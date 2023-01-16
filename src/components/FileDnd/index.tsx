@@ -1,14 +1,9 @@
 import FileDownloadIcon from '@mui/icons-material/FileDownloadOutlined';
 import { Alert, Box, Typography } from '@mui/material';
 import { FileUploader } from 'react-drag-drop-files';
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 const acceptedFileTypes = ['sbc'];
-
-const FileDndPropTypes = {
-  updateFile: PropTypes.func.isRequired,
-};
 
 interface FileDndProps {
   updateFile: (file: File) => void;
@@ -74,7 +69,5 @@ const FileDnd = ({ updateFile }: FileDndProps) => {
     </>
   );
 };
-
-FileDnd.propTypes = FileDndPropTypes;
 
 export default FileDnd;

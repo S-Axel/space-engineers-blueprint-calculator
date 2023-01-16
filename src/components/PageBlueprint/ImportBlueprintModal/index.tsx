@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types';
 import {
   Dialog, DialogContent, DialogTitle,
-  Fab, IconButton,
+  Fab, IconButton, SxProps, Theme,
   useMediaQuery,
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
@@ -10,9 +9,15 @@ import { useState } from 'react';
 
 import FileDnd from '../../FileDnd';
 
-const ImportBlueprintModal = ({ updateFile, sx, ...props }) => {
+interface ImportBlueprintModalProps {
+  updateFile: (file: File) => void;
+  sx?: SxProps;
+  [name:string]: unknown;
+}
+
+const ImportBlueprintModal = ({ updateFile, sx = {}, ...props }: ImportBlueprintModalProps) => {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const isBreakpointUpSm = useMediaQuery((theme) => theme.breakpoints.up('sm'));
+  const isBreakpointUpSm = useMediaQuery((theme) => (theme as Theme).breakpoints.up('sm'));
 
   const onFabClickHandler = () => {
     setDialogOpen(true);
@@ -22,7 +27,7 @@ const ImportBlueprintModal = ({ updateFile, sx, ...props }) => {
     setDialogOpen(false);
   };
 
-  const updateFileHandler = (file) => {
+  const updateFileHandler = (file: File) => {
     updateFile(file);
     setDialogOpen(false);
   };
@@ -60,15 +65,6 @@ const ImportBlueprintModal = ({ updateFile, sx, ...props }) => {
       </Dialog>
     </>
   );
-};
-
-ImportBlueprintModal.propTypes = {
-  updateFile: PropTypes.func.isRequired,
-  sx: PropTypes.object,
-};
-
-ImportBlueprintModal.defaultProps = {
-  sx: {},
 };
 
 export default ImportBlueprintModal;
