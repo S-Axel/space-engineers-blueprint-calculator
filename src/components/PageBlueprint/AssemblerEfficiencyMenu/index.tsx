@@ -3,6 +3,7 @@ import { IconButton, Menu, MenuItem } from '@mui/material';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 import Efficiency from '../../../enums/Efficiency';
+import EFFICIENCY_VALUES from '../../../constants/efficiencyValues';
 
 interface AssemblerEfficiencyMenuProps {
   efficiency: Efficiency;
@@ -47,10 +48,10 @@ const AssemblerEfficiencyMenu = (
           onClose={onCloseHandler}
         >
           <MenuItem dense disabled>Assembler efficiency</MenuItem>
-          {Object.values(Efficiency).map((mapEfficiency) => (
+          {EFFICIENCY_VALUES.map((mapEfficiency) => (
             <MenuItem
               key={mapEfficiency}
-              onClick={buildOnClickMenuHandler(mapEfficiency as Efficiency)}
+              onClick={buildOnClickMenuHandler(mapEfficiency)}
               selected={mapEfficiency === efficiency}
               dense
             >
