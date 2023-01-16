@@ -9,11 +9,12 @@ import Page from '../Page';
 import { computeBlueprint, translateBlueprint } from '../../services/blueprintService';
 import PageBlueprint from '../PageBlueprint';
 import PageFileDnd from '../PageFileDnd';
+import { Blueprint } from '../../services/blueprintService/types';
 
 const App = () => {
-  const [blueprint, setBlueprint] = useState(null);
+  const [blueprint, setBlueprint] = useState<Blueprint | null>(null);
 
-  const updateFile = async (newFile) => {
+  const updateFile = async (newFile: File) => {
     try {
       const xml = await newFile.text();
       const newBlueprint = computeBlueprint(xml);

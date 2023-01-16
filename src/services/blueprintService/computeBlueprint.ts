@@ -4,9 +4,7 @@ import { gameIngots } from '../../game_data/gameIngots';
 import xmlToJsObject from '../../utils/xmlToJsObject';
 import { Grid, Ingredient, Recipe } from './types';
 
-interface XmlObject {
-  [key: string]: any;
-}
+type XmlObject = Record<string, any>;
 
 /**
  * Compute blocks for a recipe
@@ -16,7 +14,7 @@ interface XmlObject {
  */
 const computeBlocks = (blocks: string[], size: string): Ingredient[] => {
   const blocksCount = blocks.reduce(
-    (acc: { [key: string]: number }, block) => (
+    (acc: Record<string, number>, block) => (
       acc[block] ? { ...acc, [block]: acc[block] + 1 } : { ...acc, [block]: 1 }
     ),
     {},
@@ -36,7 +34,7 @@ const computeBlocks = (blocks: string[], size: string): Ingredient[] => {
  * @return {Ingredient[]}
  */
 const computeComponents = (blocks: Ingredient[]) => {
-  const components: { [key: string]: number } = {};
+  const components: Record<string, number> = {};
   blocks.forEach(
     (block) => {
       gameBlocks[block.name].recipe.forEach(({ count, subtype }) => {
@@ -59,7 +57,7 @@ const computeComponents = (blocks: Ingredient[]) => {
  * @return {Ingredient[]}
  */
 const computeIngots = (components: Ingredient[]) => {
-  const ingots: { [key: string]: number } = {};
+  const ingots: Record<string, number> = {};
   components.forEach(
     (component) => {
       gameComponents[component.name].recipe.forEach(({ count, subtype }) => {

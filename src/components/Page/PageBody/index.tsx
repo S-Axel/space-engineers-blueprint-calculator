@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
+import { ReactNode } from 'react';
 import BackgroundStyle from '../../BackgroundStyle';
 
-const PageBody = ({ children }) => (
+const PageBody = ({ children }: {
+  children: ReactNode;
+}) => (
   <Box
     component="section"
     sx={{

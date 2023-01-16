@@ -1,10 +1,5 @@
 import { AppBar, Toolbar, Typography } from '@mui/material';
 
-/**
- * PageHeader component
- * @return {JSX.Element}
- * @constructor
- */
 const PageHeader = () => (
   <AppBar color="transparent" sx={{ position: 'static' }} elevation={1}>
     <Toolbar>

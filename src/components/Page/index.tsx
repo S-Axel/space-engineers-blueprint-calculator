@@ -1,7 +1,9 @@
-import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
+import { ReactNode } from 'react';
 
-const Page = ({ children }) => (
+const Page = ({ children }: {
+  children: ReactNode;
+}) => (
   <Box
     sx={{
       minHeight: '100vh',
@@ -12,9 +14,5 @@ const Page = ({ children }) => (
     {children}
   </Box>
 );
-
-Page.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default Page;
