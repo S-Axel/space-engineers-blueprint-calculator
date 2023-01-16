@@ -23,7 +23,6 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
-    'react/forbid-prop-types': 'off',
     'react/require-default-props':['error', {
       functions:'defaultArguments',
     }],
