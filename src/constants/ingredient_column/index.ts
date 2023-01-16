@@ -1,10 +1,12 @@
+import IngredientColumnId from '../../enums/IngredientColumnId';
+
 const INGREDIENT_COLUMN = {
   NAME: {
-    id: 'displayNameValue',
+    id: IngredientColumnId.NAME,
     label: 'Name',
   },
   COUNT: {
-    id: 'count',
+    id: IngredientColumnId.COUNT,
     label: 'Count',
   },
 };

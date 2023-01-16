@@ -1,4 +1,4 @@
-import GridDisplayOption from '../../constants/GridDisplayOption';
+import GridDisplayOption from '../../enums/GridDisplayOption';
 import { Blueprint, Grid } from './types';
 
 /**

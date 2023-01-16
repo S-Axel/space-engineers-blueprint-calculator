@@ -1,10 +1,13 @@
 import { TableCell, TableRow } from '@mui/material';
-import PropTypes from 'prop-types';
 
 import roundToDec from '../../../utils/roundToDec';
-import { propTypeIngredient } from '../../../prop_types';
+import { Ingredient } from '../../../services/blueprintService/types';
 
-const IngredientsTableBodyCells = ({ ingredients }) => (
+interface IngredientsTableBodyCellsProps {
+  ingredients: Ingredient[];
+}
+
+const IngredientsTableBodyCells = ({ ingredients }: IngredientsTableBodyCellsProps) => (
   <>
     {ingredients.map((block) => (
       <TableRow key={block.name}>
@@ -14,9 +17,5 @@ const IngredientsTableBodyCells = ({ ingredients }) => (
     ))}
   </>
 );
-
-IngredientsTableBodyCells.propTypes = {
-  ingredients: PropTypes.arrayOf(propTypeIngredient).isRequired,
-};
 
 export default IngredientsTableBodyCells;

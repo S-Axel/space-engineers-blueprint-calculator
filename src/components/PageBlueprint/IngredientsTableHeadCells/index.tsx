@@ -1,29 +1,31 @@
 import { TableCell, TableRow, TableSortLabel } from '@mui/material';
-import PropTypes from 'prop-types';
 
 import INGREDIENT_COLUMN from '../../../constants/ingredient_column';
-import SORT_DIRECTION from '../../../constants/sort_direction';
+import IngredientColumnId from '../../../enums/IngredientColumnId';
+import SortDirection from '../../../enums/SortDirection';
 
-const IngredientsTableHeadCells = ({ sortBy, sortDirection, onSortClick }) => (
-  <TableRow>
-    {Object.values(INGREDIENT_COLUMN).map((column) => (
-      <TableCell key={column.id} sortDirection={sortBy === column.id ? sortDirection : null}>
-        <TableSortLabel
-          active={sortBy === column.id}
-          direction={sortDirection || SORT_DIRECTION.ASC}
-          onClick={() => onSortClick(column.id)}
-        >
-          {column.label}
-        </TableSortLabel>
-      </TableCell>
-    ))}
-  </TableRow>
+interface IngredientsTableHeadCellsProps {
+  sortBy: IngredientColumnId;
+  sortDirection: SortDirection;
+  onSortClick: (columnClickedId: IngredientColumnId) => void;
+}
+
+const IngredientsTableHeadCells = (
+  ({ sortBy, sortDirection, onSortClick }: IngredientsTableHeadCellsProps) => (
+    <TableRow>
+      {Object.values(INGREDIENT_COLUMN).map((column) => (
+        <TableCell key={column.id} sortDirection={sortBy === column.id ? sortDirection : undefined}>
+          <TableSortLabel
+            active={sortBy === column.id}
+            direction={sortDirection}
+            onClick={() => onSortClick(column.id)}
+          >
+            {column.label}
+          </TableSortLabel>
+        </TableCell>
+      ))}
+    </TableRow>
+  )
 );
-
-IngredientsTableHeadCells.propTypes = {
-  sortBy: PropTypes.oneOf(Object.values(INGREDIENT_COLUMN).map((column) => column.id)).isRequired,
-  sortDirection: PropTypes.oneOf(Object.values(SORT_DIRECTION)).isRequired,
-  onSortClick: PropTypes.func.isRequired,
-};
 
 export default IngredientsTableHeadCells;

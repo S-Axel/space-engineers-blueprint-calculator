@@ -1,6 +1,6 @@
 import { CardContent, Typography } from '@mui/material';
 
-import GridDisplayOption from '../../../constants/GridDisplayOption';
+import GridDisplayOption from '../../../enums/GridDisplayOption';
 import CustomCard from '../../CustomCard';
 import CustomCardHeader from '../../CustomCardHeader';
 import { Blueprint, Grid } from '../../../services/blueprintService/types';

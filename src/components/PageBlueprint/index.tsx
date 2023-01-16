@@ -5,7 +5,7 @@ import { useTheme } from '@mui/material';
 import BlueprintTitle from './BlueprintTitle';
 import BlueprintGridList from './BlueprintGridList';
 import BlueprintGridTitle from './BlueprintGridTitle';
-import GridDisplayOption from '../../constants/GridDisplayOption';
+import GridDisplayOption from '../../enums/GridDisplayOption';
 import { getSelectedGridInfo } from '../../services/blueprintService';
 import BlueprintGridIngots from './BlueprintGridIngots';
 import BlueprintGridIngredients from './BlueprintGridIngredients';

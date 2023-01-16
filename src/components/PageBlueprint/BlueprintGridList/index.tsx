@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-import GridDisplayOption from '../../../constants/GridDisplayOption';
+import GridDisplayOption from '../../../enums/GridDisplayOption';
 import { Blueprint } from '../../../services/blueprintService/types';
 
 interface BlueprintGridListProps {
