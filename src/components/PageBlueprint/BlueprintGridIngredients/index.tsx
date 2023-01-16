@@ -31,8 +31,8 @@ const BlueprintGridIngredients = (
     const onSortClickHandler = (columnClickedId: IngredientColumnId) => {
       if (sortBy === columnClickedId) {
         setSortDirection(
-          (previousOrder) => (
-            previousOrder === SortDirection.ASC ? SortDirection.DESC : SortDirection.ASC
+          (previousDirection) => (
+            previousDirection === SortDirection.ASC ? SortDirection.DESC : SortDirection.ASC
           ),
         );
       } else {
@@ -47,7 +47,10 @@ const BlueprintGridIngredients = (
           const ingredientAValue = ingredientA[sortBy];
           const ingredientBValue = ingredientB[sortBy];
 
-          return sortCompareFunction(ingredientAValue, ingredientBValue);
+          if (sortDirection === SortDirection.ASC) {
+            return sortCompareFunction(ingredientAValue, ingredientBValue);
+          }
+          return sortCompareFunction(ingredientBValue, ingredientAValue);
         });
 
       setSortedIngredients(newSortedIngredients);
