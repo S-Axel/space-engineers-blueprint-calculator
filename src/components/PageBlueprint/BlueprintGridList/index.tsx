@@ -32,8 +32,8 @@ const BlueprintGridList = ({
   onOpenChange,
 }: BlueprintGridListProps) => {
   const gridOptions = [
-    { name: 'All', id: GridDisplayOption.All },
-    { name: 'Main grid', id: GridDisplayOption.Main },
+    { name: 'All', id: GridDisplayOption.ALL },
+    { name: 'Main grid', id: GridDisplayOption.MAIN },
     ...blueprint.subGrids.map((grid, index) => ({ name: grid.name, id: index })),
   ];
   const theme = useTheme();

@@ -18,7 +18,7 @@ const getSelectedGridInfo = (
     }
     throw new Error(`Invalid selectedGrid: ${selectedGrid}`);
   }
-  if (selectedGrid === GridDisplayOption.Main) {
+  if (selectedGrid === GridDisplayOption.MAIN) {
     return blueprint.mainGrid;
   }
   return blueprint;

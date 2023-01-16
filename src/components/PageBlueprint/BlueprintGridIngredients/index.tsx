@@ -8,7 +8,7 @@ import {
 
 import CustomCard from '../../CustomCard';
 import CustomCardHeader from '../../CustomCardHeader';
-import INGREDIENT_COLUMN from '../../../constants/ingredient_column';
+import INGREDIENT_COLUMN from '../../../constants/ingredientColumn';
 import SortDirection from '../../../enums/SortDirection';
 import IngredientsTableHeadCells from '../IngredientsTableHeadCells';
 import IngredientsTableBodyCells from '../IngredientsTableBodyCells';

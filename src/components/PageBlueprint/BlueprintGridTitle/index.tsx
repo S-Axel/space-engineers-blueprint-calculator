@@ -6,8 +6,8 @@ import CustomCardHeader from '../../CustomCardHeader';
 import { Blueprint, Grid } from '../../../services/blueprintService/types';
 
 const GridDisplayOptionDictionary: Record<GridDisplayOption, string> = {
-  [GridDisplayOption.All]: 'All grids',
-  [GridDisplayOption.Main]: 'Main grid',
+  [GridDisplayOption.ALL]: 'All grids',
+  [GridDisplayOption.MAIN]: 'Main grid',
 };
 
 interface BlueprintGridTitleProps {

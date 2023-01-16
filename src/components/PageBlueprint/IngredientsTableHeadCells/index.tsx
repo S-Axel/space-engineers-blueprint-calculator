@@ -1,6 +1,6 @@
 import { TableCell, TableRow, TableSortLabel } from '@mui/material';
 
-import INGREDIENT_COLUMN from '../../../constants/ingredient_column';
+import INGREDIENT_COLUMN from '../../../constants/ingredientColumn';
 import IngredientColumnId from '../../../enums/IngredientColumnId';
 import SortDirection from '../../../enums/SortDirection';
 

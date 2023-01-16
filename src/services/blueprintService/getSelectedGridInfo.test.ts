@@ -9,9 +9,9 @@ describe('blueprintService/getSelectedGridInfo', () => {
     expect(() => getSelectedGridInfo(computeBlueprint(grid4014), 'invalid')).toThrow();
   });
 
-  it('should return the main grid, given GridDisplayOption.Main', () => {
+  it('should return the main grid, given GridDisplayOption.MAIN', () => {
     const blueprint = computeBlueprint(grid4014);
-    expect(getSelectedGridInfo(blueprint, GridDisplayOption.Main)).toBe(blueprint.mainGrid);
+    expect(getSelectedGridInfo(blueprint, GridDisplayOption.MAIN)).toBe(blueprint.mainGrid);
   });
 
   it('should return the sub grid, given a sub grid id', () => {
@@ -19,8 +19,8 @@ describe('blueprintService/getSelectedGridInfo', () => {
     expect(getSelectedGridInfo(blueprint, 1)).toBe(blueprint.subGrids[1]);
   });
 
-  it('should return the blueprint, given GridDisplayOption.All', () => {
+  it('should return the blueprint, given GridDisplayOption.ALL', () => {
     const blueprint = computeBlueprint(grid4014);
-    expect(getSelectedGridInfo(blueprint, GridDisplayOption.All)).toBe(blueprint);
+    expect(getSelectedGridInfo(blueprint, GridDisplayOption.ALL)).toBe(blueprint);
   });
 });

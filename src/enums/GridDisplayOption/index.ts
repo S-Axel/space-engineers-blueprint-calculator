@@ -1,6 +1,6 @@
 enum GridDisplayOption {
-  All = 'all',
-  Main = 'main',
+  ALL = 'all',
+  MAIN = 'main',
 }
 
 export default GridDisplayOption;

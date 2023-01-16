@@ -27,16 +27,16 @@ const PageBlueprint = ({ blueprint, updateFile }: PageBlueprintProps) => {
   const [state, setState] = useState<State>({
     // possible values for selectedGrid:
     // 'all', 'main' from GridDisplayOption and any subgrid index as a number
-    selectedGrid: GridDisplayOption.All,
-    selectedGridInfo: getSelectedGridInfo(blueprint, GridDisplayOption.All),
+    selectedGrid: GridDisplayOption.ALL,
+    selectedGridInfo: getSelectedGridInfo(blueprint, GridDisplayOption.ALL),
     listOpen: false,
   });
 
   useEffect(() => {
     setState((prevState) => ({
       ...prevState,
-      selectedGrid: GridDisplayOption.All,
-      selectedGridInfo: getSelectedGridInfo(blueprint, GridDisplayOption.All),
+      selectedGrid: GridDisplayOption.ALL,
+      selectedGridInfo: getSelectedGridInfo(blueprint, GridDisplayOption.ALL),
     }));
   }, [blueprint]);
 
