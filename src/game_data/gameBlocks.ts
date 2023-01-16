@@ -8,8 +8,6 @@ export interface GameBlock {
   recipe: { subtype: string; count: string }[];
 }
 
-export interface GameBlocks {
-  [key: string]: GameBlock;
-}
+export type GameBlocks = Record<string, GameBlock>;
 
 export const gameBlocks: GameBlocks = blocks;

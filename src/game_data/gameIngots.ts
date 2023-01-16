@@ -4,8 +4,6 @@ export interface GameIngot {
   name: string;
 }
 
-export interface GameIngots {
-  [key: string]: GameIngot;
-}
+export type GameIngots = Record<string, GameIngot>;
 
 export const gameIngots: GameIngots = ingots;

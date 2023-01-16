@@ -6,8 +6,6 @@ export interface GameComponent {
   recipe: { subtype: string; count: string }[];
 }
 
-export interface GameComponents {
-  [key: string]: GameComponent;
-}
+export type GameComponents = Record<string, GameComponent>;
 
 export const gameComponents: GameComponents = components;
