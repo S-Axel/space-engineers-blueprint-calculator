@@ -78,7 +78,7 @@ const BlueprintGridList = ({
             <MenuItem
               key={grid.id}
               dense
-              sx={grid.id === selectedGrid ? { fontWeight: 'bolder' } : {}}
+              selected={grid.id === selectedGrid}
               onClick={() => onGridChange(grid.id)}
             >
               {grid.name}
