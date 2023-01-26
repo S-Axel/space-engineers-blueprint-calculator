@@ -30,7 +30,8 @@ describe('blueprintService/computeBlueprint', () => {
 
   it('should extract blueprint static informations', () => {
     let blueprint = computeBlueprint(miningShipBp);
-    expect(blueprint.dlc).toBe('DecorativeBlocks');
+    expect(Array.isArray(blueprint.dlc)).toBe(true);
+    expect(blueprint.dlc).toContainEqual('DecorativeBlocks');
     expect(blueprint.name).toBe('Mining Ship');
     expect(blueprint.owner).toBeInstanceOf(Object);
     expect(blueprint.owner.name).toBe('FRChewbie');
@@ -38,7 +39,8 @@ describe('blueprintService/computeBlueprint', () => {
     expect(blueprint.workshopId).toBe('0');
 
     blueprint = computeBlueprint(grid7782);
-    expect(blueprint.dlc).toBeUndefined();
+    expect(Array.isArray(blueprint.dlc)).toBe(true);
+    expect(blueprint.dlc.length).toBe(0);
     expect(blueprint.name).toBe('Static Grid 7782');
     expect(blueprint.owner).toBeInstanceOf(Object);
     expect(blueprint.owner.name).toBe('FRChewbie');

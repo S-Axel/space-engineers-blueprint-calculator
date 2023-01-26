@@ -2,14 +2,14 @@ import { Typography } from '@mui/material';
 
 import { Blueprint } from '../../../services/blueprintService/types';
 
-const getDlcString = (dlc: string | string[] | undefined) => {
-  if (typeof dlc === 'string') {
-    return `Requires 1 DLC: ${dlc}`;
+const getDlcString = (dlc: string[]) => {
+  if (!dlc.length) {
+    return 'No DLC required';
   }
-  if (Array.isArray(dlc)) {
-    return `Requires ${dlc.length} DLCs: ${dlc.join(', ')}`;
+  if (dlc.length === 1) {
+    return `Requires 1 DLC: ${dlc[0]}`;
   }
-  return 'No DLC required';
+  return `Requires ${dlc.length} DLCs: ${dlc.join(', ')}`;
 };
 
 const commonStyle = {

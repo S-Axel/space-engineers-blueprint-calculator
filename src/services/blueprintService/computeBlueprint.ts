@@ -208,17 +208,29 @@ const computeSubGrids = (mainGridName: string, xmlGrids: XmlObject) => {
 };
 
 /**
- * Gather static information from xml object
- * @param {XmlObject} xmlObject
- * @return {{owner: {steamId: string, name: string}, name: string, workshopId: string, dlc: string}}
+ * Get dlc data from xml and wrap them with an array
  */
-const getStaticInfo = (xmlObject: XmlObject) => ({
+const xmlDlcToDlcArray = (xmlDlc: string | string[] | undefined): string[] => {
+  if (!xmlDlc) return [];
+  if (Array.isArray(xmlDlc)) return xmlDlc;
+  return [xmlDlc];
+};
+
+/**
+ * Gather static information from xml object
+ */
+const getStaticInfo = (xmlObject: XmlObject): {
+  owner: { steamId: string; name: string };
+  name: string;
+  workshopId: string;
+  dlc: string[];
+} => ({
   owner: {
     name: xmlObject.Definitions.ShipBlueprints.ShipBlueprint.DisplayName,
     steamId: xmlObject.Definitions.ShipBlueprints.ShipBlueprint.OwnerSteamId,
   },
   workshopId: xmlObject.Definitions.ShipBlueprints.ShipBlueprint.WorkshopId,
-  dlc: xmlObject.Definitions.ShipBlueprints.ShipBlueprint.DLC,
+  dlc: xmlDlcToDlcArray(xmlObject.Definitions.ShipBlueprints.ShipBlueprint.DLC),
   // eslint-disable-next-line no-underscore-dangle
   name: xmlObject.Definitions.ShipBlueprints.ShipBlueprint.Id._Subtype,
 

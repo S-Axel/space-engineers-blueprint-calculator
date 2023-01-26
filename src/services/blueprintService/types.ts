@@ -24,7 +24,7 @@ export interface Grid {
 export interface Blueprint {
   name: string;
   owner: { steamId: string; name: string };
-  dlc?: string;
+  dlc: string[];
   workshopId: string;
   blockCount: number;
   mass: number;

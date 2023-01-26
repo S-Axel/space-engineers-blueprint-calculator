@@ -9,6 +9,7 @@ export default {
       },
     workshopId: '0',
     name: 'Static Grid 7420',
+    dlc: [],
     mainGrid: {
       name: 'Static Grid 7420',
       size: 'Large',
