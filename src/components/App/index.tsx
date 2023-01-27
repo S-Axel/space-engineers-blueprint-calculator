@@ -6,7 +6,11 @@ import PageHeader from '../Page/PageHeader';
 import PageFooter from '../Page/PageFooter';
 import PageBody from '../Page/PageBody';
 import Page from '../Page';
-import { computeBlueprint, translateBlueprint } from '../../services/blueprintService';
+import {
+  computeBlueprint,
+  getDefaultBlueprint,
+  translateBlueprint,
+} from '../../services/blueprintService';
 import PageBlueprint from '../PageBlueprint';
 import PageFileDnd from '../PageFileDnd';
 import { Blueprint } from '../../services/blueprintService/types';
@@ -28,6 +32,10 @@ const App = () => {
     }
   };
 
+  const useDefaultBlueprint = () => {
+    setBlueprint(getDefaultBlueprint);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -40,7 +48,7 @@ const App = () => {
               : <PageFileDnd updateFile={updateFile} />
           }
         </PageBody>
-        <PageFooter />
+        <PageFooter useDefaultBlueprint={useDefaultBlueprint} />
       </Page>
     </ThemeProvider>
   );
